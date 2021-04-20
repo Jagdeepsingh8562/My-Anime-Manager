@@ -14,6 +14,9 @@
 		B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */; };
 		B90E934E262ADA95000F6065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B90E934D262ADA95000F6065 /* Assets.xcassets */; };
 		B90E9351262ADA95000F6065 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90E934F262ADA95000F6065 /* LaunchScreen.storyboard */; };
+		B9C11BFF262E980300DB7EFB /* jikanAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */; };
+		B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */; };
+		B9C11C07262E9DC500DB7EFB /* SelectedAnimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C06262E9DC500DB7EFB /* SelectedAnimeResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		B90E934D262ADA95000F6065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B90E9350262ADA95000F6065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B90E9352262ADA95000F6065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jikanAPIClient.swift; sourceTree = "<group>"; };
+		B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeResponse.swift; sourceTree = "<group>"; };
+		B9C11C06262E9DC500DB7EFB /* SelectedAnimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimeResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,8 @@
 		B9C11BF8262E970700DB7EFB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B9C11C01262E9B9600DB7EFB /* Response */,
+				B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -116,6 +124,15 @@
 				B90E934F262ADA95000F6065 /* LaunchScreen.storyboard */,
 			);
 			path = "Assests and Storyboard";
+			sourceTree = "<group>";
+		};
+		B9C11C01262E9B9600DB7EFB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */,
+				B9C11C06262E9DC500DB7EFB /* SelectedAnimeResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,10 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C11BFF262E980300DB7EFB /* jikanAPIClient.swift in Sources */,
+				B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */,
 				B90E9346262ADA94000F6065 /* ViewController.swift in Sources */,
 				B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */,
 				B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */,
 				B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */,
+				B9C11C07262E9DC500DB7EFB /* SelectedAnimeResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

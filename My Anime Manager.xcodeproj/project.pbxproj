@@ -60,14 +60,62 @@
 			children = (
 				B90E9341262ADA94000F6065 /* AppDelegate.swift */,
 				B90E9343262ADA94000F6065 /* SceneDelegate.swift */,
+				B9C11BF7262E96FB00DB7EFB /* Model */,
+				B9C11BFA262E973500DB7EFB /* View Controllers */,
+				B9C11BFD262E977900DB7EFB /* Assests and Storyboard */,
+				B90E9352262ADA95000F6065 /* Info.plist */,
+			);
+			path = "My Anime Manager";
+			sourceTree = "<group>";
+		};
+		B9C11BF7262E96FB00DB7EFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9C11BF9262E971200DB7EFB /* Data */,
+				B9C11BF8262E970700DB7EFB /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B9C11BF8262E970700DB7EFB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B9C11BF9262E971200DB7EFB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B9C11BFA262E973500DB7EFB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9C11BFC262E974900DB7EFB /* Custom Views */,
 				B90E9345262ADA94000F6065 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B9C11BFC262E974900DB7EFB /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		B9C11BFD262E977900DB7EFB /* Assests and Storyboard */ = {
+			isa = PBXGroup;
+			children = (
 				B90E9347262ADA94000F6065 /* Main.storyboard */,
 				B90E934D262ADA95000F6065 /* Assets.xcassets */,
 				B90E934F262ADA95000F6065 /* LaunchScreen.storyboard */,
-				B90E9352262ADA95000F6065 /* Info.plist */,
-				B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */,
 			);
-			path = "My Anime Manager";
+			path = "Assests and Storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

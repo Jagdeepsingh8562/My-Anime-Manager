@@ -6,25 +6,43 @@
 //
 
 import Foundation
+import UIKit
 
 class JikanClient {
+    
     struct Const {
         //static var malId: Int = 0
-        static var anime:[Anime] = []
+        static var searchedAnime:[Anime] = []
+        static var topAnime: [TopAnime] = []
+        static var selectedAnimeCharacters: [Character] = []
         static var selectedAnime: SelectedAnimeResponse!
         static var baseUrl:String = "https://api.jikan.moe/v3/"
+        static var recommendationsAnime: [Recommendation] = []
+        static var currentSeasonAnime: [SeasonAnime] = []
+        static var upcommingSeason: [SeasonAnime] = []
+        
     }
     enum Endpoints {
         case searchAnime(String)
         case selectedAnime(Int)
+        case recommendAnime(Int)
+        case characters(Int)
+        case topAnime
+        case currentSeason
+        case upcommingSeason
         
         var stringUrl: String {
             switch self {
             case .searchAnime(let query): return
-                Const.baseUrl + "search/anime?q=\(query)&page=1&type=anime"
+                Const.baseUrl + "search/anime?q=\(query)&page=1&type=anime&limit=10"
             case .selectedAnime(let animeId): return
                 Const.baseUrl + "anime/\(animeId)"
-           
+            case .characters(let animeId): return Const.baseUrl + "anime/\(animeId)/characters_staff"
+            case .recommendAnime(let animeId): return
+                Const.baseUrl + "anime/\(animeId)/recommendations"
+            case .topAnime: return Const.baseUrl + "top/anime/1/bypopularity"
+            case .currentSeason: return Const.baseUrl + "season/\(SeasonHelper.currentYear())/\(SeasonHelper.currentSeason())"
+            case .upcommingSeason: return Const.baseUrl + "season/later"
             }
         }
         var url: URL {
@@ -32,53 +50,140 @@ class JikanClient {
     }
     
     class func getSearchAnime(query: String, completion: @escaping (Bool, Error?) -> Void) {
-        let request = URLRequest(url: Endpoints.searchAnime(query).url)
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                guard let data = data else{
-                    DispatchQueue.main.async {
-                    completion(false, error)
-                    }
-                    return
+        taskForGETRequest(url: Endpoints.searchAnime(query).url, responseType: SearchAnimeResponse.self) { (response, error) in
+            if let response = response {
+                Const.searchedAnime = response.results
+                completion(true, nil)
             }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    class func getSelectedAnime(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.selectedAnime(animeId).url, responseType: SelectedAnimeResponse.self) { (response, error) in
+            if let response = response {
+                Const.selectedAnime = response
+                completion(true, nil)
+            }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    class func getRecommendAnime(animeId : Int,completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.recommendAnime(animeId).url, responseType: RecommendationsAnimeResponse.self) { (response, error) in
+            if let response = response {
+                Const.recommendationsAnime = response.recommendations
+                completion(true, nil)
+            }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    class func getCharacters(animeId : Int,completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.characters(animeId).url, responseType: SelectedAnimeCharactersResponse.self) { (response, error) in
+            if let response = response {
+                Const.selectedAnimeCharacters = response.characters
+                completion(true,nil)
+            } else {
+                completion(false,error)
+            }
+        }
+    }
+    class func getCurrentSeasonAnime(completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.currentSeason.url, responseType: SeasonResponse.self) { (response, error) in
+            if let response = response {
+                Const.currentSeasonAnime = response.anime
+                completion(true,nil)
+            }
+            else {
+                completion(false,error)
+            }
+        }
+    }
+    class func getUpcommingSeasonAnime(completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.upcommingSeason.url, responseType: SeasonResponse.self) { (response, error) in
+            if let response = response {
+                Const.upcommingSeason = response.anime
+                completion(true,nil)
+            }
+            else {
+                completion(false,error)
+            }
+        }
+    }
+    class func getTopAnime(completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.topAnime.url, responseType: TopAnimeResponse.self) { (response, error) in
+            if let response = response {
+                Const.topAnime = response.top
+                completion(true, nil)
+            }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    class func getAnimeImage(urlString:String ,completion: @escaping (_ image: UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            DispatchQueue.main.async {
+                completion(imageFromCache) }
+        } else {
+            DispatchQueue.global(qos: .userInitiated).async {
                 do {
-                    let responseObject = try JSONDecoder().decode(SearchAnimeResponse.self, from: data)
-                    print(type(of: responseObject))
-                    Const.anime = responseObject.results
+                    let imgData = try Data(contentsOf: url)
+                    guard let image = UIImage(data: imgData) else {
+                        completion(nil)
+                        return
+                    }
+                    
                     DispatchQueue.main.async {
-                    completion(true, nil)
+                        let imageToCahce = image
+                        imageCache.setObject(imageToCahce, forKey: urlString as AnyObject)
+                        completion(imageToCahce)
                     }
                 } catch {
                     print(error)
+                }
+            }
+            
+        }
+    }
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            do {
+                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
                     DispatchQueue.main.async {
-                    completion(false, error)
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
                     }
                 }
             }
-            task.resume()
-       }
-    
-    func selectedAnime(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {
-        let request = URLRequest(url: Endpoints.selectedAnime(animeId).url)
-
-    let task = URLSession.shared.dataTask(with: request) { data, response, error in
-      
-        guard let data = data else {
-            completion(false,error)
-            return
         }
-        do {
-            let responseObject = try JSONDecoder().decode(SelectedAnimeResponse.self, from: data)
-            Const.selectedAnime = responseObject
-            
-        DispatchQueue.main.async {
-            print(responseObject.related.sequel[0].name)
-            completion(true,nil)
-        }
-        } catch {
-            print(error)
-        }
+        task.resume()
         
-        }
-    task.resume()
+        return task
     }
+    
 }
+let imageCache = NSCache<AnyObject, AnyObject>()

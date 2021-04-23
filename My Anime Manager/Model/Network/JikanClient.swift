@@ -108,6 +108,7 @@ class JikanClient {
         taskForGETRequest(url: Endpoints.upcommingSeason.url, responseType: SeasonResponse.self) { (response, error) in
             if let response = response {
                 Const.upcommingSeason = response.anime
+                
                 completion(true,nil)
             }
             else {
@@ -186,4 +187,3 @@ class JikanClient {
     }
     
 }
-let imageCache = NSCache<AnyObject, AnyObject>()

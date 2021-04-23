@@ -1,24 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6hu-du-tie">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="I2q-vP-0cV">
+            <objects>
+                <navigationController id="6hu-du-tie" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XmJ-x7-f8x">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WpA-yg-D84"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AvA-8W-Oof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-622" y="78"/>
+        </scene>
+        <!--My Anime Manager-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="My_Anime_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Anime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvi-c8-eI0">
+                                <rect key="frame" x="20" y="103" width="97" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Season Anime" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MD-aB-QnL">
+                                <rect key="frame" x="20" y="302" width="206" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-6y-8RL" customClass="CurrentAnimeCollectionView" customModule="My_Anime_Manager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="341" width="414" height="140"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="uIN-kO-Kcx"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEI-oi-lfy">
+                                    <size key="itemSize" width="110" height="127"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellB" id="1Fc-rh-yiz" customClass="CustomCell" customModule="My_Anime_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="B0p-ql-9No">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="127"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lAd-wd-Dao">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="109"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6D-g0-AK4">
+                                                    <rect key="frame" x="4" y="111" width="106" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p6D-g0-AK4" firstAttribute="leading" secondItem="B0p-ql-9No" secondAttribute="leading" constant="4" id="0jL-Ev-n1x"/>
+                                                <constraint firstItem="p6D-g0-AK4" firstAttribute="top" secondItem="lAd-wd-Dao" secondAttribute="bottom" constant="2" id="6u3-ML-kuN"/>
+                                                <constraint firstAttribute="bottom" secondItem="p6D-g0-AK4" secondAttribute="bottom" id="8EA-fC-IKf"/>
+                                                <constraint firstAttribute="trailing" secondItem="p6D-g0-AK4" secondAttribute="trailing" id="OQY-Er-7zq"/>
+                                                <constraint firstItem="lAd-wd-Dao" firstAttribute="top" secondItem="B0p-ql-9No" secondAttribute="top" id="epV-Ox-3Z8"/>
+                                                <constraint firstAttribute="trailing" secondItem="lAd-wd-Dao" secondAttribute="trailing" id="qDu-Cl-zaJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="p6D-g0-AK4" secondAttribute="bottom" id="rBL-Rg-UO1"/>
+                                                <constraint firstItem="lAd-wd-Dao" firstAttribute="leading" secondItem="B0p-ql-9No" secondAttribute="leading" id="wW1-sL-0Do"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="110" height="127"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="s4j-Ve-a6l"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="YWx-HI-ZA3"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54z-V6-w0c">
+                                <rect key="frame" x="352" y="302" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcomming Season Anime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01p-q6-ctB">
+                                <rect key="frame" x="20" y="506" width="248" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FTR-I9-w0D" customClass="UpcommingAnimeCollectionView" customModule="My_Anime_Manager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="545" width="414" height="143"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="143" id="sYP-Sr-fJn"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vo0-tT-0fe">
+                                    <size key="itemSize" width="110" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellC" id="p59-lv-o3C" customClass="CustomCell" customModule="My_Anime_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yGZ-Vk-oae">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlK-Op-esE">
+                                                    <rect key="frame" x="0.0" y="112" width="110" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HaI-5t-QcF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="106"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="QlK-Op-esE" secondAttribute="trailing" id="5CC-GF-EOT"/>
+                                                <constraint firstItem="QlK-Op-esE" firstAttribute="leading" secondItem="yGZ-Vk-oae" secondAttribute="leading" id="bA4-B8-i9a"/>
+                                                <constraint firstAttribute="bottom" secondItem="QlK-Op-esE" secondAttribute="bottom" id="gzL-Pm-cok"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="110" height="128"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="mfV-9R-Bbb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fHK-d3-4NZ"/>
+                                </connections>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XDG-Si-5F3" customClass="TopAnimeCollectionView" customModule="My_Anime_Manager" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142" width="414" height="140"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="T0A-Hj-ly9"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6c8-Ng-xuM">
+                                    <size key="itemSize" width="109" height="129"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellA" id="wGN-YI-ir4" customClass="CustomCell" customModule="My_Anime_Manager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="129"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YDc-FH-qzX">
+                                            <rect key="frame" x="0.0" y="0.0" width="109" height="129"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jOX-CL-1fl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="109" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-IT-IZ7">
+                                                    <rect key="frame" x="0.0" y="112" width="109" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="LC4-IT-IZ7" secondAttribute="bottom" constant="1" id="YD4-VR-6MZ"/>
+                                                <constraint firstItem="LC4-IT-IZ7" firstAttribute="trailing" secondItem="jOX-CL-1fl" secondAttribute="trailing" id="lPc-4g-ByY"/>
+                                                <constraint firstItem="LC4-IT-IZ7" firstAttribute="leading" secondItem="jOX-CL-1fl" secondAttribute="leading" id="s0c-KU-h9v"/>
+                                                <constraint firstItem="jOX-CL-1fl" firstAttribute="leading" secondItem="LC4-IT-IZ7" secondAttribute="leading" id="uzT-m9-wCi"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="109" height="129"/>
+                                        <connections>
+                                            <outlet property="image" destination="jOX-CL-1fl" id="9uT-C9-cb3"/>
+                                            <outlet property="label" destination="LC4-IT-IZ7" id="HLw-d1-Hpx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="tkT-LV-CAe"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5oh-bP-3IU"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54z-V6-w0c" secondAttribute="trailing" constant="6" id="9f0-Ph-xiT"/>
+                            <constraint firstItem="7MD-aB-QnL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="B63-dJ-qcN"/>
+                            <constraint firstItem="dUe-6y-8RL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G1s-1k-08V"/>
+                            <constraint firstItem="mvi-c8-eI0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="KAO-a0-muX"/>
+                            <constraint firstItem="XDG-Si-5F3" firstAttribute="top" secondItem="mvi-c8-eI0" secondAttribute="bottom" constant="15" id="OuU-Ie-m3R"/>
+                            <constraint firstItem="01p-q6-ctB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Xce-Lo-49a"/>
+                            <constraint firstItem="XDG-Si-5F3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YEQ-WE-DH1"/>
+                            <constraint firstItem="FTR-I9-w0D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b3E-R8-Q8e"/>
+                            <constraint firstItem="dUe-6y-8RL" firstAttribute="top" secondItem="7MD-aB-QnL" secondAttribute="bottom" constant="15" id="bdu-Sw-wrS"/>
+                            <constraint firstItem="dUe-6y-8RL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bwo-7q-IzL"/>
+                            <constraint firstItem="7MD-aB-QnL" firstAttribute="top" secondItem="XDG-Si-5F3" secondAttribute="bottom" constant="20" id="eBb-NZ-Gcf"/>
+                            <constraint firstItem="01p-q6-ctB" firstAttribute="top" secondItem="dUe-6y-8RL" secondAttribute="bottom" constant="25" id="elz-I9-054"/>
+                            <constraint firstItem="FTR-I9-w0D" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f3K-7o-zff"/>
+                            <constraint firstItem="mvi-c8-eI0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hYj-Rr-ZW0"/>
+                            <constraint firstItem="54z-V6-w0c" firstAttribute="top" secondItem="XDG-Si-5F3" secondAttribute="bottom" constant="20" id="ii5-ar-ym1"/>
+                            <constraint firstItem="FTR-I9-w0D" firstAttribute="top" secondItem="01p-q6-ctB" secondAttribute="bottom" constant="15" id="uMk-gz-Icb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XDG-Si-5F3" secondAttribute="trailing" id="yvl-nq-C58"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="My Anime Manager" id="sJb-FZ-Mjq"/>
+                    <connections>
+                        <outlet property="currentFlowLayout" destination="gEI-oi-lfy" id="JeH-hc-ZCS"/>
+                        <outlet property="currentSeasonAnimeCollection" destination="dUe-6y-8RL" id="zRT-JI-JOs"/>
+                        <outlet property="seasonLabel" destination="54z-V6-w0c" id="W6x-eT-B4J"/>
+                        <outlet property="topAnimeCollection" destination="XDG-Si-5F3" id="I1b-ti-XT1"/>
+                        <outlet property="topFlowLayout" destination="6c8-Ng-xuM" id="GUo-Wo-Ipr"/>
+                        <outlet property="upcommingAnimeCollection" destination="FTR-I9-w0D" id="tvF-El-3he"/>
+                        <outlet property="upcommingFlowLayout" destination="vo0-tT-0fe" id="F6O-RZ-1f5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="118.84057971014494" y="78.348214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

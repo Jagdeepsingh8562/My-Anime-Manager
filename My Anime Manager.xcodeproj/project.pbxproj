@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90E9341262ADA94000F6065 /* AppDelegate.swift */; };
 		B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90E9343262ADA94000F6065 /* SceneDelegate.swift */; };
-		B90E9346262ADA94000F6065 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90E9345262ADA94000F6065 /* ViewController.swift */; };
+		B90E9346262ADA94000F6065 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90E9345262ADA94000F6065 /* MainViewController.swift */; };
 		B90E9349262ADA94000F6065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90E9347262ADA94000F6065 /* Main.storyboard */; };
 		B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */; };
 		B90E934E262ADA95000F6065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B90E934D262ADA95000F6065 /* Assets.xcassets */; };
 		B90E9351262ADA95000F6065 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90E934F262ADA95000F6065 /* LaunchScreen.storyboard */; };
-		B9C11BFF262E980300DB7EFB /* JikanAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11BFE262E980300DB7EFB /* JikanAPIClient.swift */; };
+		B9C11BFF262E980300DB7EFB /* jikanAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */; };
 		B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */; };
 		B9C11C07262E9DC500DB7EFB /* SelectedAnimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C06262E9DC500DB7EFB /* SelectedAnimeResponse.swift */; };
 		B9C11C0B262EBAAE00DB7EFB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C0A262EBAAE00DB7EFB /* ErrorResponse.swift */; };
@@ -23,19 +23,21 @@
 		B9C11C14262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C13262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift */; };
 		B9C11C17262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */; };
 		B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */; };
+		B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E126304CEE007D775C /* CollectionViews.swift */; };
+		B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E526305C32007D775C /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B90E933E262ADA94000F6065 /* My Anime Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Anime Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90E9341262ADA94000F6065 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B90E9343262ADA94000F6065 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B90E9345262ADA94000F6065 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B90E9345262ADA94000F6065 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B90E9348262ADA94000F6065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B90E934B262ADA94000F6065 /* My_Anime_Manager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_Anime_Manager.xcdatamodel; sourceTree = "<group>"; };
 		B90E934D262ADA95000F6065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B90E9350262ADA95000F6065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B90E9352262ADA95000F6065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9C11BFE262E980300DB7EFB /* JikanAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanAPIClient.swift; sourceTree = "<group>"; };
+		B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jikanAPIClient.swift; sourceTree = "<group>"; };
 		B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeResponse.swift; sourceTree = "<group>"; };
 		B9C11C06262E9DC500DB7EFB /* SelectedAnimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimeResponse.swift; sourceTree = "<group>"; };
 		B9C11C0A262EBAAE00DB7EFB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -44,6 +46,8 @@
 		B9C11C13262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimeCharactersResponse.swift; sourceTree = "<group>"; };
 		B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalAnimeReponse.swift; sourceTree = "<group>"; };
 		B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHelper.swift; sourceTree = "<group>"; };
+		B9ECA4E126304CEE007D775C /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
+		B9ECA4E526305C32007D775C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B9C11C01262E9B9600DB7EFB /* Response */,
-				B9C11BFE262E980300DB7EFB /* JikanAPIClient.swift */,
+				B9C11BFE262E980300DB7EFB /* jikanAPIClient.swift */,
 				B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */,
 			);
 			path = Network;
@@ -117,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				B9C11BFC262E974900DB7EFB /* Custom Views */,
-				B90E9345262ADA94000F6065 /* ViewController.swift */,
+				B90E9345262ADA94000F6065 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -125,6 +129,8 @@
 		B9C11BFC262E974900DB7EFB /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9ECA4E126304CEE007D775C /* CollectionViews.swift */,
+				B9ECA4E526305C32007D775C /* CustomCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -225,10 +231,12 @@
 			files = (
 				B9C11C0E262EBB4700DB7EFB /* RecommendationsAnimeResponse.swift in Sources */,
 				B9C11C11262ECB8B00DB7EFB /* TopAnimeResponse.swift in Sources */,
-				B9C11BFF262E980300DB7EFB /* JikanAPIClient.swift in Sources */,
+				B9C11BFF262E980300DB7EFB /* jikanAPIClient.swift in Sources */,
 				B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */,
-				B90E9346262ADA94000F6065 /* ViewController.swift in Sources */,
+				B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */,
+				B90E9346262ADA94000F6065 /* MainViewController.swift in Sources */,
 				B9C11C17262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift in Sources */,
+				B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */,
 				B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */,
 				B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */,
 				B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */,

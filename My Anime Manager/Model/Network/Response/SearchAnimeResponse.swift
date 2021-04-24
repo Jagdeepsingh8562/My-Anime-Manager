@@ -9,23 +9,23 @@ import Foundation
 // MARK: - SearchAnimeResponse
 
     struct SearchAnimeResponse: Codable {
-        let requestHash: String
-        let requestCached: Bool
-        let requestCacheExpiry: Int
-        let results: [Anime]
+ //       let requestHash: String
+ //       let requestCached: Bool
+ //       let requestCacheExpiry: Int
+        let results: [SearchAnime]
         let lastPage: Int
 
         enum CodingKeys: String, CodingKey {
-            case requestHash = "request_hash"
-            case requestCached = "request_cached"
-            case requestCacheExpiry = "request_cache_expiry"
+//            case requestHash = "request_hash"
+//            case requestCached = "request_cached"
+//            case requestCacheExpiry = "request_cache_expiry"
             case results
             case lastPage = "last_page"
         }
     }
 
     // MARK: - Result
-    struct Anime: Codable {
+    struct SearchAnime: Codable {
         let malID: Int
         let url: String
         let imageURL: String
@@ -37,7 +37,6 @@ import Foundation
         // String to Date
         let startDate, endDate: String?
         let members: Int
-        //
         let rated: Rated?
 
         enum CodingKeys: String, CodingKey {

@@ -36,22 +36,10 @@ class MainViewController: UIViewController {
         setupFlowLayout(flowLayout: upcommingFlowLayout)
         apicalls()
     }
-    private func downloadImage(imageURL: String) -> UIImage {
-        var photo = UIImage(named: "imagePlaceholder")!
-        JikanClient.getAnimeImage(urlString: imageURL) { (image) in
-            guard let image = image else {
-            return
-            }
-            photo = image
-            self.topAnimeCollection.reloadData()
-
-        }
-                return photo
-       
-    }
+    
     
     func setupFlowLayout(flowLayout: UICollectionViewFlowLayout) {
-            let space:CGFloat = 4.0
+            let space:CGFloat = 6.0
             let dimension = (view.frame.size.width - (2 * space)) / 3.0
             flowLayout.minimumInteritemSpacing = space
             flowLayout.minimumLineSpacing = space
@@ -60,20 +48,28 @@ class MainViewController: UIViewController {
         }
     func apicalls() {
         JikanClient.getCurrentSeasonAnime { (success, error) in
-            if success {  self.currentAnimes = JikanClient.Const.currentSeasonAnime
+            
+            if success {
+                self.currentAnimes = Array(JikanClient.Const.currentSeasonAnime.prefix(50))
+                self.currentSeasonAnimeCollection.reloadData()
                             }
-            else {print(error!)}
+            else {
+                print(error!)
+                
+            }
             
         }
         JikanClient.getTopAnime { (success, error) in
-            if   success {  self.topAnimes = JikanClient.Const.topAnime
-                print("MV",self.topAnimes.count)
+            if   success {  self.topAnimes = Array(JikanClient.Const.topAnime.prefix(50))
                 self.topAnimeCollection.reloadData()
 
             } else { print(error!) }
         }
         JikanClient.getUpcommingSeasonAnime { (success, error) in
-            success ? self.upcommingAnimes = JikanClient.Const.upcommingSeason : print(error!)
+            if success  {self.upcommingAnimes = Array(JikanClient.Const.upcommingSeasonAnime.prefix(50))
+                self.upcommingAnimeCollection.reloadData()
+            }
+            else{print(error!)}
         }
         
     }
@@ -88,7 +84,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: view.frame.width/4, height: view.frame.height/6)
         }
         else if collectionView == currentSeasonAnimeCollection{
-            return CGSize(width: view.frame.width/4.5, height: view.frame.height/6)
+            return CGSize(width: view.frame.width/4, height: view.frame.height/6)
         }
         else {
             return CGSize(width: view.frame.width/4, height: view.frame.height/6)        }
@@ -99,10 +95,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return topAnimes.count
         }
         else if collectionView == currentSeasonAnimeCollection{
-            return 7
+            return currentAnimes.count
         }
         else {
-            return 7
+            return upcommingAnimes.count
             
         }
     }
@@ -111,19 +107,29 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == topAnimeCollection{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CustomCell
             cell.label.text = topAnimes[indexPath.row].title
-            cell.image.image = downloadImage(imageURL: topAnimes[indexPath.row].imageURL)
-           // cell.backgroundColor = .red
+            cell.imageView.image = UIImage(named: "imagePlaceholder")
+            JikanClient.getAnimeImage(urlString: topAnimes[indexPath.item].imageURL) { (image) in
+                cell.imageView.image = image
+            }
             print("something \(indexPath.item)")
         return cell
         }
         else if collectionView == currentSeasonAnimeCollection{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CustomCell
+            cell.label.text = currentAnimes[indexPath.row].title
+            cell.imageView.image = UIImage(named: "imagePlaceholder")
+            JikanClient.getAnimeImage(urlString: currentAnimes[indexPath.item].imageURL) { (image) in
+                cell.imageView.image = image
+            }
         return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellC", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellC", for: indexPath) as! CustomCell
+        cell.label.text = upcommingAnimes[indexPath.row].title
+        cell.imageView.image = UIImage(named: "imagePlaceholder")
+        JikanClient.getAnimeImage(urlString: upcommingAnimes[indexPath.item].imageURL) { (image) in
+            cell.imageView.image = image
+        }
         return cell
         
     }

@@ -12,14 +12,14 @@ class JikanClient {
     
     struct Const {
         //static var malId: Int = 0
-        static var searchedAnime:[Anime] = []
+        static var searchedAnime:[SearchAnime] = []
         static var topAnime: [TopAnime] = []
         static var selectedAnimeCharacters: [Character] = []
         static var selectedAnime: SelectedAnimeResponse!
         static var baseUrl:String = "https://api.jikan.moe/v3/"
         static var recommendationsAnime: [Recommendation] = []
         static var currentSeasonAnime: [SeasonAnime] = []
-        static var upcommingSeason: [SeasonAnime] = []
+        static var upcommingSeasonAnime: [SeasonAnime] = []
         
     }
     enum Endpoints {
@@ -34,7 +34,7 @@ class JikanClient {
         var stringUrl: String {
             switch self {
             case .searchAnime(let query): return
-                Const.baseUrl + "search/anime?q=\(query)&page=1&type=anime&limit=10"
+                Const.baseUrl + "search/anime?q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&page=1&type=anime&limit=15"
             case .selectedAnime(let animeId): return
                 Const.baseUrl + "anime/\(animeId)"
             case .characters(let animeId): return Const.baseUrl + "anime/\(animeId)/characters_staff"
@@ -107,7 +107,7 @@ class JikanClient {
     class func getUpcommingSeasonAnime(completion: @escaping (Bool, Error?) -> Void) {
         taskForGETRequest(url: Endpoints.upcommingSeason.url, responseType: SeasonResponse.self) { (response, error) in
             if let response = response {
-                Const.upcommingSeason = response.anime
+                Const.upcommingSeasonAnime = response.anime
                 
                 completion(true,nil)
             }
@@ -169,16 +169,17 @@ class JikanClient {
                     completion(responseObject, nil)
                 }
             } catch {
-                do {
-                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
-                    DispatchQueue.main.async {
-                        completion(nil, errorResponse)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
-                }
+//                do {
+//                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
+//                    DispatchQueue.main.async {
+//                        completion(nil, errorResponse)
+//                    }
+//                } catch {
+//                    DispatchQueue.main.async {
+//                        completion(nil, error)
+//                    }
+//                }
+                completion(nil,error)
             }
         }
         task.resume()

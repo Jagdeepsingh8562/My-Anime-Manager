@@ -25,6 +25,7 @@
 		B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */; };
 		B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E126304CEE007D775C /* CollectionViews.swift */; };
 		B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E526305C32007D775C /* CustomCell.swift */; };
+		B9FCE7A0263460D40075999C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCE79F263460D40075999C /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHelper.swift; sourceTree = "<group>"; };
 		B9ECA4E126304CEE007D775C /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
 		B9ECA4E526305C32007D775C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		B9FCE79F263460D40075999C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				B9C11BFC262E974900DB7EFB /* Custom Views */,
 				B90E9345262ADA94000F6065 /* MainViewController.swift */,
+				B9FCE79F263460D40075999C /* SearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				B9BB4D6126331D690038E8C9 /* JikanClient.swift in Sources */,
 				B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */,
 				B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */,
+				B9FCE7A0263460D40075999C /* SearchViewController.swift in Sources */,
 				B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */,
 				B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */,
 				B9C11C14262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift in Sources */,

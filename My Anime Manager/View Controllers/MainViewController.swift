@@ -20,21 +20,21 @@ class MainViewController: UIViewController {
     var topAnimes: [TopAnime] = []
     var upcommingAnimes: [SeasonAnime] = []
     var currentAnimes: [SeasonAnime] = []
+    var animeId:Int = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         
         seasonLabel.text = SeasonHelper.currentSeason()
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
         setupFlowLayout(flowLayout: topFlowLayout)
         setupFlowLayout(flowLayout: currentFlowLayout)
         setupFlowLayout(flowLayout: upcommingFlowLayout)
         apicalls()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     
@@ -133,7 +133,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
         
     }
-    
+    //
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == topAnimeCollection {
+            animeId = topAnimes[indexPath.item].malID
+        }
+        else if collectionView == currentSeasonAnimeCollection {
+            animeId = currentAnimes[indexPath.item].malID
+        }
+        else {
+            animeId = upcommingAnimes[indexPath.item].malID
+        }
+        performSegue(withIdentifier: "selectedAnimeSegue", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc = segue.destination as? SelectedAnimeViewController {
+            vc.animeId = animeId
+        }
+    }
 }
 
 

@@ -20,12 +20,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         currentSearchTask?.cancel()
         if searchText.count >= 3 {
-            JikanClient.getSearchAnime(query: searchText) { (success, error) in
+            currentSearchTask = JikanClient.getSearchAnime(query: searchText) { (success, error) in
                 if success {
-                    
-                    
                     self.searchedAnimeString = JikanClient.Const.searchedAnime
-                    print(self.searchedAnimeString[0].title,self.searchedAnimeString.count)
                     self.tableView.reloadData()
                 } else {
                     print(error!)
@@ -46,7 +43,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
-    }
+    }   
 }
 
 extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
@@ -64,6 +61,20 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
         cell.textLabel?.text = "\(anime.title)"
         cell.detailTextLabel?.text = "⭐️\(anime.score)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("qwertyuio")
+        malId = searchedAnimeString[indexPath.item].malID
+        performSegue(withIdentifier: "selectedAnimeSegue", sender: (Any).self)
+        //navigationController?.pushViewController(SelectedAnimeViewController(), animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc = segue.destination as? SelectedAnimeViewController {
+            vc.animeId = malId
+        }
     }
     
     

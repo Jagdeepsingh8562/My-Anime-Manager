@@ -13,21 +13,22 @@ struct SelectedAnimeResponse: Codable {
     let requestCacheExpiry, malID: Int
     let url: String
     let imageURL: String
-    let trailerURL: String
-    let title, titleEnglish, titleJapanese: String
+    let trailerURL: String?
+    let title: String
+    let titleEnglish, titleJapanese: String?
     let titleSynonyms: [String]
     let type, source: String
-    let episodes: Int
+    let episodes: Int?
     let status: String
     let airing: Bool
-    let aired: Aired
+    let aired: Aired?
     let duration, rating: String
-    let score: Double
-    let scoredBy, rank, popularity, members: Int
+    let score: Double?
+    let scoredBy, rank, popularity, members: Int?
     let favorites: Int
     let synopsis: String
     let background: JSONNull?
-    let premiered, broadcast: String
+    let premiered, broadcast: String?
     let related: Related
     let producers, licensors, studios, genres: [Genre]
     let openingThemes, endingThemes: [String]
@@ -55,7 +56,7 @@ struct SelectedAnimeResponse: Codable {
 // MARK: - Aired
 struct Aired: Codable {
     let from, to: String?
-    let prop: Prop
+    let prop: Prop?
     let string: String
 }
 
@@ -66,7 +67,7 @@ struct Prop: Codable {
 
 // MARK: - From
 struct From: Codable {
-    let day, month, year: Int
+    let day, month, year: Int?
 }
 
 // MARK: - Genre
@@ -89,7 +90,7 @@ enum TypeEnumTwo: String, Codable {
 
 // MARK: - Related
 struct Related: Codable {
-    let adaptation, sideStory, sequel: [Genre]
+    let adaptation, sideStory, sequel: [Genre]?
 
     enum CodingKeys: String, CodingKey {
         case adaptation = "Adaptation"

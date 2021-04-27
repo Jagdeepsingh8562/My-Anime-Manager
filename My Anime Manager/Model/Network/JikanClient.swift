@@ -49,8 +49,8 @@ class JikanClient {
             return URL(string: stringUrl)! }
     }
     
-    class func getSearchAnime(query: String, completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.searchAnime(query).url, responseType: SearchAnimeResponse.self) { (response, error) in
+    class func getSearchAnime(query: String, completion: @escaping (Bool, Error?) -> Void) -> URLSessionDataTask {
+       let task = taskForGETRequest(url: Endpoints.searchAnime(query).url, responseType: SearchAnimeResponse.self) { (response, error) in
             if let response = response {
                 Const.searchedAnime = response.results
                 completion(true, nil)
@@ -59,6 +59,7 @@ class JikanClient {
                 completion(false, error)
             }
         }
+        return task
     }
     
     class func getSelectedAnime(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {

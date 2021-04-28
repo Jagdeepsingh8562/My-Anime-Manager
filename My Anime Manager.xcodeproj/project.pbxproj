@@ -14,6 +14,8 @@
 		B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */; };
 		B90E934E262ADA95000F6065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B90E934D262ADA95000F6065 /* Assets.xcassets */; };
 		B90E9351262ADA95000F6065 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90E934F262ADA95000F6065 /* LaunchScreen.storyboard */; };
+		B9A1C2772639AFA200823459 /* FavoritesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A1C2762639AFA200823459 /* FavoritesCustomCell.swift */; };
+		B9A1C27A2639B04400823459 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A1C2792639B04400823459 /* FavoritesViewController.swift */; };
 		B9B1FD8D2637B56900B2DA8E /* SelectedAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1FD8C2637B56900B2DA8E /* SelectedAnimeViewController.swift */; };
 		B9BB4D6126331D690038E8C9 /* JikanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB4D6026331D690038E8C9 /* JikanClient.swift */; };
 		B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */; };
@@ -24,6 +26,7 @@
 		B9C11C14262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C13262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift */; };
 		B9C11C17262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */; };
 		B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */; };
+		B9C3F4082639B4960052B6C6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C3F4072639B4960052B6C6 /* DataController.swift */; };
 		B9D8CF0B26353DBE0025DC7B /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */; };
 		B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E126304CEE007D775C /* CollectionViews.swift */; };
 		B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E526305C32007D775C /* CustomCell.swift */; };
@@ -40,6 +43,8 @@
 		B90E934D262ADA95000F6065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B90E9350262ADA95000F6065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B90E9352262ADA95000F6065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A1C2762639AFA200823459 /* FavoritesCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCustomCell.swift; sourceTree = "<group>"; };
+		B9A1C2792639B04400823459 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		B9B1FD8C2637B56900B2DA8E /* SelectedAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimeViewController.swift; sourceTree = "<group>"; };
 		B9BB4D6026331D690038E8C9 /* JikanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanClient.swift; sourceTree = "<group>"; };
 		B9C11C02262E9BB600DB7EFB /* SearchAnimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeResponse.swift; sourceTree = "<group>"; };
@@ -50,6 +55,7 @@
 		B9C11C13262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimeCharactersResponse.swift; sourceTree = "<group>"; };
 		B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalAnimeReponse.swift; sourceTree = "<group>"; };
 		B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHelper.swift; sourceTree = "<group>"; };
+		B9C3F4072639B4960052B6C6 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		B9ECA4E126304CEE007D775C /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
 		B9ECA4E526305C32007D775C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B90E934A262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld */,
+				B9C3F4072639B4960052B6C6 /* DataController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 				B90E9345262ADA94000F6065 /* MainViewController.swift */,
 				B9FCE79F263460D40075999C /* SearchViewController.swift */,
 				B9B1FD8C2637B56900B2DA8E /* SelectedAnimeViewController.swift */,
+				B9A1C2792639B04400823459 /* FavoritesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				B9ECA4E126304CEE007D775C /* CollectionViews.swift */,
 				B9ECA4E526305C32007D775C /* CustomCell.swift */,
 				B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */,
+				B9A1C2762639AFA200823459 /* FavoritesCustomCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -238,12 +247,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A1C2772639AFA200823459 /* FavoritesCustomCell.swift in Sources */,
 				B9C11C0E262EBB4700DB7EFB /* RecommendationsAnimeResponse.swift in Sources */,
 				B9C11C11262ECB8B00DB7EFB /* TopAnimeResponse.swift in Sources */,
 				B9C11C03262E9BB600DB7EFB /* SearchAnimeResponse.swift in Sources */,
 				B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */,
 				B90E9346262ADA94000F6065 /* MainViewController.swift in Sources */,
 				B9C11C17262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift in Sources */,
+				B9C3F4082639B4960052B6C6 /* DataController.swift in Sources */,
 				B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */,
 				B9BB4D6126331D690038E8C9 /* JikanClient.swift in Sources */,
 				B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */,
@@ -255,6 +266,7 @@
 				B9B1FD8D2637B56900B2DA8E /* SelectedAnimeViewController.swift in Sources */,
 				B9C11C14262ED63F00DB7EFB /* SelectedAnimeCharactersResponse.swift in Sources */,
 				B9C11C07262E9DC500DB7EFB /* SelectedAnimeResponse.swift in Sources */,
+				B9A1C27A2639B04400823459 /* FavoritesViewController.swift in Sources */,
 				B9C11C0B262EBAAE00DB7EFB /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

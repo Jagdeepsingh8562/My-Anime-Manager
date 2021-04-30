@@ -12,18 +12,5 @@ class CustomCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
-    override func awakeFromNib() {
-       super.awakeFromNib()
-       //custom logic goes here
-        
-    }
-    init() {
-        super.init(frame: .zero)
-        
-        
-    }
-    required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
-    }
    
 }

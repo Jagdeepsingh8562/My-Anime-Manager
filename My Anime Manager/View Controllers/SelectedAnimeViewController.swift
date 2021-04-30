@@ -17,7 +17,6 @@ class SelectedAnimeViewController: UIViewController {
     @IBOutlet weak var moreInfo: UIButton!
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var progessview: CircularProgressBar!
-    @IBOutlet weak var bgDarkenView: UIView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var favButton: UIButton!
@@ -37,8 +36,8 @@ class SelectedAnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bgDarkenView.backgroundColor = .darkGray
-        bgDarkenView.alpha = 0.35
+        view.backgroundColor = .darkGray
+        bgImageView.alpha = 0.7
         dataController = appDelegate.dataController
        
     }

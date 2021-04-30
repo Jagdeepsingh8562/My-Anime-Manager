@@ -26,13 +26,12 @@ class SelectedAnimeViewController: UIViewController {
     var animeId: Int = 20
     var score:Double = 0
     var genres: [String] = []
-    //
-    var animeImage: UIImage!
+
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataController:DataController!
     var fav: Bool = false
-   // 
+    var favoritesToDelete: FavoritesEntity!
     let heartFill = UIImage(systemName: "heart.fill")
     let heart = UIImage(systemName: "heart")
     
@@ -41,9 +40,36 @@ class SelectedAnimeViewController: UIViewController {
         bgDarkenView.backgroundColor = .darkGray
         bgDarkenView.alpha = 0.35
         dataController = appDelegate.dataController
-        
        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        JikanClient.getSelectedAnime(animeId: animeId) { (success, error) in
+            if success {
+                guard let anime = JikanClient.Const.selectedAnime else {
+                    return
+                }
+                self.selectedAnime = anime
+                // score 
+                if let score = self.selectedAnime.score {
+                    self.score = score/10
+                }
+                
+                //genre
+                for genre in self.selectedAnime.genres {
+                    self.genres.append(genre.name)
+                }
+                self.setupView()
+                self.setupFetchedRequest()
+                self.setupFavoriteImage()
+            }
+            else {
+                print(error!)
+                }
+            }
+        }
     private func setupFavoriteImage(){
         if fav {
             favButton.setImage(heartFill, for: .normal)
@@ -59,13 +85,22 @@ class SelectedAnimeViewController: UIViewController {
         if let  result = try? dataController.viewContext.fetch(fetchRequest){
         
             for favor in result {
-                if favor.name == selectedAnime.title {
+                if favor.animeId == selectedAnime.malID {
                     fav = favor.favorite
+                    favoritesToDelete = favor
                 }
             }
             }
         }
-    func viewUpdate() {
+    fileprivate func setupProgressBar() {
+        progessview.lineColor = .systemRed
+        progessview.lineWidth = 6
+        progessview.labelSize = 0
+        progessview.safePercent = 100
+        progessview.setProgress(to:  score, withAnimation: true)
+    }
+    
+    func setupView() {
         titleLabel.text = selectedAnime.title
         genreLabel.text = "\(genres.joined(separator: ","))"
         Episodeslabel.text = "Episodes:\(selectedAnime.episodes ?? 0)"
@@ -76,65 +111,38 @@ class SelectedAnimeViewController: UIViewController {
                 return
             }
             self.bgImageView.image = image
-            //
-            self.animeImage = image
+            
         }
         
-        progessview.lineColor = .systemRed
-        progessview.lineWidth = 6
-        progessview.labelSize = 0
-        progessview.safePercent = 100
-        progessview.setProgress(to:  score, withAnimation: true)
+        setupProgressBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        JikanClient.getSelectedAnime(animeId: animeId) { (success, error) in
-            if success {
-                self.selectedAnime = JikanClient.Const.selectedAnime
-                print("dataa")
-                
-                // score 
-                guard let score = self.selectedAnime.score else {
-                    return
-                }
-                self.score = score/10
-                //genre
-                for genre in self.selectedAnime.genres {
-                    self.genres.append(genre.name)
-                }
-                self.viewUpdate()
-                self.setupFetchedRequest()
-                self.setupFavoriteImage()
-            }
-            else {
-                print(error!)
-                }
-            }
-        
-        
-        
-        }
     @IBAction func setFavorite(_ sender: Any) {
         let favEntity = FavoritesEntity(context: dataController.viewContext)
         favEntity.image = bgImageView.image?.pngData()
         favEntity.name = selectedAnime.title
         favEntity.score = selectedAnime.score ?? 0
+        favEntity.animeId = Int32(selectedAnime.malID)
         //fav
         if favButton.image(for: .normal) == heart {
         favButton.setImage(heartFill, for: .normal)
             favEntity.favorite = true
+            try? dataController.viewContext.save()
         }
         //not fav
         else {
             favButton.setImage(heart, for: .normal)
             favEntity.favorite = false
+            favoritesToDelete = favEntity
+            dataController.viewContext.delete(favoritesToDelete)
+            try? dataController.viewContext.save()
         }
-        try? dataController.viewContext.save()
+        
     }
     
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
 }

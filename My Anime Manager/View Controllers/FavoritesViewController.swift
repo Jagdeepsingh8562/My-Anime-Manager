@@ -19,10 +19,11 @@ class FavoritesViewController: UIViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         dataController = appDelegate.dataController
+        
     }
     fileprivate func setupFetchedRequest() {
         let fetchRequest:NSFetchRequest<FavoritesEntity> = FavoritesEntity.fetchRequest()
-        //fetchRequest.sortDescriptors = []
+        fetchRequest.sortDescriptors = []
         if let  result = try? dataController.viewContext.fetch(fetchRequest){
             favEntity = result
            
@@ -30,6 +31,8 @@ class FavoritesViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupFetchedRequest()
+        tabBarController?.tabBar.isHidden = false
         tableView.reloadData()
         print(favEntity.count)
     }
@@ -46,4 +49,13 @@ class FavoritesViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.subtitleLabel.text = "⭐️\(fav.score)"
         return cell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "SelectedAnimeViewController") as! SelectedAnimeViewController
+        vc.animeId = Int(favEntity[indexPath.row].animeId)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

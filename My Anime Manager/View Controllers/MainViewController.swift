@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currentSeasonAnimeCollection: CurrentAnimeCollectionView!
     @IBOutlet weak var upcommingAnimeCollection: UpcommingAnimeCollectionView!
     @IBOutlet weak var seasonLabel: UILabel!
+    //weak var delegate: SelectedAnimeViewController!
     
     var topAnimes: [TopAnime] = []
     var upcommingAnimes: [SeasonAnime] = []
@@ -34,7 +35,7 @@ class MainViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -144,14 +145,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         else {
             animeId = upcommingAnimes[indexPath.item].malID
         }
-        performSegue(withIdentifier: "selectedAnimeSegue", sender: nil)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "SelectedAnimeViewController") as! SelectedAnimeViewController
+        vc.animeId = animeId
+        navigationController?.pushViewController(vc, animated: true)
         
-        if let vc = segue.destination as? SelectedAnimeViewController {
-            vc.animeId = animeId
-        }
     }
+   
+    
 }
 
 

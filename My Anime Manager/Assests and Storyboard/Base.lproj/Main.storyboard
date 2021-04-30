@@ -562,12 +562,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9i-tP-clP">
-                                                    <rect key="frame" x="346.5" y="43" width="47.5" height="17"/>
+                                                    <rect key="frame" x="346.5" y="43" width="47.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxx-Kv-Hla">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxx-Kv-Hla">
                                                     <rect key="frame" x="141" y="31" width="153" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -576,12 +576,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="a9i-tP-clP" firstAttribute="top" secondItem="2aJ-zH-Bny" secondAttribute="topMargin" constant="32" id="CpD-33-AvH"/>
-                                                <constraint firstItem="a9i-tP-clP" firstAttribute="centerY" secondItem="cxx-Kv-Hla" secondAttribute="centerY" id="CtZ-7y-djH"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cxx-Kv-Hla" secondAttribute="bottom" constant="37" id="GDm-RN-ObE"/>
                                                 <constraint firstItem="cxx-Kv-Hla" firstAttribute="leading" secondItem="B8v-Mm-0O0" secondAttribute="trailing" constant="30" id="MuT-8B-KHX"/>
                                                 <constraint firstItem="B8v-Mm-0O0" firstAttribute="top" secondItem="2aJ-zH-Bny" secondAttribute="top" id="NwJ-fF-L7K"/>
                                                 <constraint firstAttribute="trailing" secondItem="cxx-Kv-Hla" secondAttribute="trailing" constant="120" id="fhk-uw-LD3"/>
-                                                <constraint firstItem="a9i-tP-clP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cxx-Kv-Hla" secondAttribute="trailing" constant="8" symbolic="YES" id="lvO-gR-dGy"/>
                                                 <constraint firstItem="cxx-Kv-Hla" firstAttribute="top" secondItem="2aJ-zH-Bny" secondAttribute="topMargin" constant="20" id="vFJ-ka-et2"/>
                                                 <constraint firstItem="B8v-Mm-0O0" firstAttribute="leading" secondItem="2aJ-zH-Bny" secondAttribute="leadingMargin" constant="-9" id="vnW-r6-LfN"/>
                                                 <constraint firstItem="a9i-tP-clP" firstAttribute="trailing" secondItem="2aJ-zH-Bny" secondAttribute="trailingMargin" id="zVg-QB-QSN"/>

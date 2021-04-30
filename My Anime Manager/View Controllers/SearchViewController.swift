@@ -75,7 +75,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("qwertyuio")
         let vc = self.storyboard?.instantiateViewController(identifier: "SelectedAnimeViewController") as! SelectedAnimeViewController
         vc.animeId = searchedAnime[indexPath.item].malID
         navigationController?.pushViewController(vc, animated: true)

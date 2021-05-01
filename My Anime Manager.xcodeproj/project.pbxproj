@@ -30,6 +30,7 @@
 		B9D8CF0B26353DBE0025DC7B /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */; };
 		B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E126304CEE007D775C /* CollectionViews.swift */; };
 		B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E526305C32007D775C /* CustomCell.swift */; };
+		B9F6C3B6263D854000F20905 /* DetailsAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6C3B5263D854000F20905 /* DetailsAnimeViewController.swift */; };
 		B9FCE7A0263460D40075999C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCE79F263460D40075999C /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		B9ECA4E126304CEE007D775C /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
 		B9ECA4E526305C32007D775C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		B9F6C3B5263D854000F20905 /* DetailsAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAnimeViewController.swift; sourceTree = "<group>"; };
 		B9FCE79F263460D40075999C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				B9FCE79F263460D40075999C /* SearchViewController.swift */,
 				B9B1FD8C2637B56900B2DA8E /* SelectedAnimeViewController.swift */,
 				B9A1C2792639B04400823459 /* FavoritesViewController.swift */,
+				B9F6C3B5263D854000F20905 /* DetailsAnimeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */,
 				B9FCE7A0263460D40075999C /* SearchViewController.swift in Sources */,
 				B9D8CF0B26353DBE0025DC7B /* CircularProgressBar.swift in Sources */,
+				B9F6C3B6263D854000F20905 /* DetailsAnimeViewController.swift in Sources */,
 				B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */,
 				B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */,
 				B9B1FD8D2637B56900B2DA8E /* SelectedAnimeViewController.swift in Sources */,

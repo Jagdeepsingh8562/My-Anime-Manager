@@ -39,7 +39,7 @@ class SelectedAnimeViewController: UIViewController {
         view.backgroundColor = .black
         bgImageView.alpha = 0.7
         moreInfo.layer.cornerRadius = 14
-        
+        isLoading(true)
         dataController = appDelegate.dataController
        
     }
@@ -47,6 +47,7 @@ class SelectedAnimeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        bgImageView.image = UIImage(named: "imagePlaceholder")
         JikanClient.getSelectedAnime(animeId: animeId) { (success, error) in
             if success {
                 guard let anime = JikanClient.Const.selectedAnime else {
@@ -65,13 +66,25 @@ class SelectedAnimeViewController: UIViewController {
                 self.setupView()
                 self.setupFetchedRequest()
                 self.setupFavoriteIcon()
+                self.isLoading(false)
             }
             else {
                 print(error!)
                 }
             }
         }
-   
+    func isLoading(_ loading: Bool) {
+        if loading {
+            activityView.startAnimating()
+            favButton.isEnabled = false
+            moreInfo.isEnabled = false
+        }
+        else {
+            activityView.stopAnimating()
+            favButton.isEnabled = true
+            moreInfo.isEnabled = true
+        }
+    }
     
     private func setupFavoriteIcon(){
         if fav {
@@ -103,19 +116,32 @@ class SelectedAnimeViewController: UIViewController {
         progessview.setProgress(to:  score, withAnimation: true)
     }
     
-    func setupView() {
+    fileprivate func setupImage() {
+        
+        JikanClient.getPictures(animeId: selectedAnime.malID) { (success, error) in
+            if success {
+                let pictures = JikanClient.Const.pictures
+                let random = Int.random(in: 0..<pictures.count)
+                JikanClient.getAnimeImage(urlString: pictures[random].large) { (image) in
+                    if let image = image  {
+                    self.bgImageView.image = image
+                    }
+                    
+                }
+            }
+            else{
+                print(error)
+            }
+        }
+        
+    }
+    
+    private func setupView() {
         titleLabel.text = selectedAnime.title
         genreLabel.text = "\(genres.joined(separator: ","))"
         episodesLabel.text = "Episodes:\(selectedAnime.episodes ?? 0) Type: \(selectedAnime.type)"
         ratinglabel.text = "\(selectedAnime.score ?? 0.0)"
-        bgImageView.image = UIImage(named: "imagePlaceholder")
-        JikanClient.getAnimeImage(urlString: selectedAnime.imageURL) { (image) in
-            guard let image = image else {
-                return
-            }
-            self.bgImageView.image = image
-            
-        }
+        setupImage()
         setupProgressBar()
     }
     
@@ -145,6 +171,15 @@ class SelectedAnimeViewController: UIViewController {
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func moreInfoAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "DetailsAnimeViewController") as! DetailsAnimeViewController
+        vc.selectedAnime = selectedAnime
+        vc.dataController = dataController
+        vc.fav = fav
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -49,7 +49,6 @@ class MainViewController: UIViewController {
         }
     func apicalls() {
         JikanClient.getCurrentSeasonAnime { (success, error) in
-            
             if success {
                 self.currentAnimes = Array(JikanClient.Const.currentSeasonAnime.prefix(50))
                 self.currentSeasonAnimeCollection.reloadData()
@@ -104,35 +103,27 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         }
     }
+    func customCollectionViewCell(_ collectionView: UICollectionView,indexPath: IndexPath,reuseIdentifier: String,animeArray: [SeasonAnime]) -> UICollectionViewCell{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
+            cell.label.text = animeArray[indexPath.row].title
+            cell.imageView.image = UIImage(named: "imagePlaceholder")
+            JikanClient.getAnimeImage(urlString: animeArray[indexPath.item].imageURL) { (image) in
+            cell.imageView.image = image
+        }
+            return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == topAnimeCollection{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CustomCell
-            cell.label.text = topAnimes[indexPath.row].title
-            cell.imageView.image = UIImage(named: "imagePlaceholder")
-            JikanClient.getAnimeImage(urlString: topAnimes[indexPath.item].imageURL) { (image) in
-                cell.imageView.image = image
-            }
-            print("something \(indexPath.item)")
-        return cell
+            let cell =  customCollectionViewCell(collectionView, indexPath: indexPath, reuseIdentifier: "cellA", animeArray: topAnimes)
+            return cell
         }
         else if collectionView == currentSeasonAnimeCollection{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CustomCell
-            cell.label.text = currentAnimes[indexPath.row].title
-            cell.imageView.image = UIImage(named: "imagePlaceholder")
-            JikanClient.getAnimeImage(urlString: currentAnimes[indexPath.item].imageURL) { (image) in
-                cell.imageView.image = image
-            }
-        return cell
+                let cell = customCollectionViewCell(collectionView, indexPath: indexPath, reuseIdentifier: "cellB", animeArray: currentAnimes)
+                return cell
         }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellC", for: indexPath) as! CustomCell
-        cell.label.text = upcommingAnimes[indexPath.row].title
-        cell.imageView.image = UIImage(named: "imagePlaceholder")
-        JikanClient.getAnimeImage(urlString: upcommingAnimes[indexPath.item].imageURL) { (image) in
-            cell.imageView.image = image
-        }
-        return cell
+            let cell = customCollectionViewCell(collectionView, indexPath: indexPath, reuseIdentifier: "cellC", animeArray: upcommingAnimes)
+            return cell
         
     }
     //

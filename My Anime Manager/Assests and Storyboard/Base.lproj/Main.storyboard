@@ -316,6 +316,9 @@
                                     <color key="titleShadowColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted" title="More Info"/>
+                                <connections>
+                                    <action selector="moreInfoAction:" destination="vOi-mZ-3iH" eventType="touchUpInside" id="J9T-YA-f7D"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rR-5p-7xQ" customClass="CircularProgressBar" customModule="My_Anime_Manager" customModuleProvider="target">
                                 <rect key="frame" x="280" y="709" width="90" height="39"/>
@@ -326,7 +329,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nD5-Kh-DAI">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nD5-Kh-DAI">
                                 <rect key="frame" x="182" y="423" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ehy-GG-9mg"/>
@@ -418,10 +421,10 @@
             </objects>
             <point key="canvasLocation" x="2398.5507246376815" y="352.90178571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Details Anime View Controller-->
         <scene sceneID="WJh-eJ-4pZ">
             <objects>
-                <viewController id="RTP-DM-Npk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsAnimeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RTP-DM-Npk" customClass="DetailsAnimeViewController" customModule="My_Anime_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ea3-Sz-crI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,6 +538,19 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="T6e-Zc-kpz">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="uFE-td-bLQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bcb-7P-qer">
+                                <rect key="frame" x="20" y="11" width="60" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Back" image="arrow.backward" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="RTP-DM-Npk" eventType="touchUpInside" id="Aa5-rn-FQa"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="6kO-nc-RkH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HxU-bN-fD2">
                                 <rect key="frame" x="309.5" y="0.0" width="84.5" height="44"/>
@@ -544,10 +560,24 @@
                                 <state key="normal" title="Favorite" image="heart" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="setFavoriteAction:" destination="RTP-DM-Npk" eventType="touchUpInside" id="gd9-nb-VcI"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="characterCollentionView" destination="ueH-rA-uUD" id="YyE-yE-TbC"/>
+                        <outlet property="dateLabel" destination="szt-DC-h6A" id="sbz-23-VSc"/>
+                        <outlet property="episodesAndRatedLabel" destination="sZi-Xa-XXc" id="OHq-fT-QbR"/>
+                        <outlet property="favButton" destination="HxU-bN-fD2" id="6Yg-mb-bhL"/>
+                        <outlet property="flowLayout" destination="AnD-BQ-Pam" id="6DV-eq-oC3"/>
+                        <outlet property="imageView" destination="MYX-ys-XxA" id="FUU-bT-wVg"/>
+                        <outlet property="nameLabel" destination="vNp-W1-nsc" id="bTD-fv-AgK"/>
+                        <outlet property="otherNamesLabel" destination="Ved-ab-T8Z" id="FvG-Ox-q0B"/>
+                        <outlet property="synopsisTextView" destination="Lud-Ir-u9B" id="uzI-gI-lDC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Mx-S4B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -768,6 +798,7 @@
         <segue reference="wUd-D1-d1G"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

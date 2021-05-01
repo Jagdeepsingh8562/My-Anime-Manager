@@ -20,6 +20,7 @@ class JikanClient {
         static var recommendationsAnime: [Recommendation] = []
         static var currentSeasonAnime: [SeasonAnime] = []
         static var upcommingSeasonAnime: [SeasonAnime] = []
+        static var pictures: [Picture] = []
         
     }
     enum Endpoints {
@@ -30,6 +31,7 @@ class JikanClient {
         case topAnime
         case currentSeason
         case upcommingSeason
+        case pictures(Int)
         
         var stringUrl: String {
             switch self {
@@ -43,6 +45,7 @@ class JikanClient {
             case .topAnime: return Const.baseUrl + "top/anime/1/bypopularity"
             case .currentSeason: return Const.baseUrl + "season/\(SeasonHelper.currentYear())/\(SeasonHelper.currentSeason())"
             case .upcommingSeason: return Const.baseUrl + "season/later"
+            case .pictures(let animeId): return Const.baseUrl + "anime/\(animeId)/pictures"
             }
         }
         var url: URL {
@@ -121,6 +124,17 @@ class JikanClient {
         taskForGETRequest(url: Endpoints.topAnime.url, responseType: TopAnimeResponse.self) { (response, error) in
             if let response = response {
                 Const.topAnime = response.top
+                completion(true, nil)
+            }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    class func getPictures(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.pictures(animeId).url, responseType: ImageResponse.self) { (response, error) in
+            if let response = response {
+                Const.pictures = response.pictures
                 completion(true, nil)
             }
             else {

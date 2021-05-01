@@ -125,3 +125,14 @@ class JSONNull: Codable, Hashable {
         try container.encodeNil()
     }
 }
+
+// MARK: - ImageResponse
+struct ImageResponse: Codable {
+    
+    let pictures: [Picture]
+}
+
+// MARK: - Picture
+struct Picture: Codable {
+    let large, small: String
+}

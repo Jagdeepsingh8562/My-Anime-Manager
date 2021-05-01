@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var seasonLabel: UILabel!
     //weak var delegate: SelectedAnimeViewController!
     
-    var topAnimes: [TopAnime] = []
+    var topAnimes: [SeasonAnime] = []
     var upcommingAnimes: [SeasonAnime] = []
     var currentAnimes: [SeasonAnime] = []
     var animeId:Int = 0
@@ -79,6 +79,7 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == topAnimeCollection {

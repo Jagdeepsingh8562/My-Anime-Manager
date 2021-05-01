@@ -13,7 +13,7 @@ class JikanClient {
     struct Const {
         //static var malId: Int = 0
         static var searchedAnime:[SearchAnime] = []
-        static var topAnime: [TopAnime] = []
+        static var topAnime: [SeasonAnime] = []
         static var selectedAnimeCharacters: [Character] = []
         static var selectedAnime: SelectedAnimeResponse!
         static var baseUrl:String = "https://api.jikan.moe/v3/"

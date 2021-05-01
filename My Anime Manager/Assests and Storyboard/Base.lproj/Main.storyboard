@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XmJ-x7-f8x">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -272,7 +271,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8aA-V2-6is">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="vOi-mZ-3iH" kind="relationship" relationship="rootViewController" id="gYs-EU-T8e"/>
@@ -294,7 +293,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GenreLabel" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcx-Lu-QPW">
-                                <rect key="frame" x="40" y="758.5" width="246" height="20.5"/>
+                                <rect key="frame" x="20" y="758.5" width="266" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -335,7 +334,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodesLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcX-X0-CLv">
-                                <rect key="frame" x="40" y="688.5" width="111" height="28"/>
+                                <rect key="frame" x="20" y="688.5" width="111" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="S48-XM-1IS"/>
                                 </constraints>
@@ -363,14 +362,14 @@
                             <constraint firstItem="nD5-Kh-DAI" firstAttribute="centerX" secondItem="sZZ-BF-lJ4" secondAttribute="centerX" id="ajP-Be-pKz"/>
                             <constraint firstItem="gA6-ow-OSD" firstAttribute="leading" secondItem="e2p-gK-RJR" secondAttribute="leading" id="akf-Hv-VsM"/>
                             <constraint firstItem="dGk-60-bA6" firstAttribute="top" secondItem="1rR-5p-7xQ" secondAttribute="bottom" constant="54" id="cz0-aK-bxg"/>
-                            <constraint firstItem="JcX-X0-CLv" firstAttribute="leading" secondItem="e2p-gK-RJR" secondAttribute="leading" constant="40" id="fcu-be-oUN"/>
                             <constraint firstItem="gA6-ow-OSD" firstAttribute="trailing" secondItem="e2p-gK-RJR" secondAttribute="trailing" id="oCN-V1-irr"/>
                             <constraint firstItem="7UO-xG-EiF" firstAttribute="leading" secondItem="sZZ-BF-lJ4" secondAttribute="leadingMargin" id="oEv-T8-Peu"/>
                             <constraint firstItem="gA6-ow-OSD" firstAttribute="top" secondItem="e2p-gK-RJR" secondAttribute="top" id="tMb-VT-Rv5"/>
                             <constraint firstItem="e2p-gK-RJR" firstAttribute="trailing" secondItem="Vwf-ps-EOM" secondAttribute="trailing" constant="41" id="uFJ-dI-M1y"/>
-                            <constraint firstItem="jcx-Lu-QPW" firstAttribute="leading" secondItem="e2p-gK-RJR" secondAttribute="leading" constant="40" id="vUt-Jg-NzI"/>
                             <constraint firstItem="JcX-X0-CLv" firstAttribute="top" secondItem="7UO-xG-EiF" secondAttribute="bottom" constant="35.5" id="vsy-Og-DLe"/>
                             <constraint firstItem="1rR-5p-7xQ" firstAttribute="top" secondItem="Vwf-ps-EOM" secondAttribute="top" constant="-17" id="x74-ST-EoW"/>
+                            <constraint firstItem="jcx-Lu-QPW" firstAttribute="leading" secondItem="JcX-X0-CLv" secondAttribute="leading" id="y8a-ch-3Qy"/>
+                            <constraint firstItem="JcX-X0-CLv" firstAttribute="leading" secondItem="7UO-xG-EiF" secondAttribute="leading" id="zJL-4X-5ZE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fqA-KX-iMe">
@@ -403,9 +402,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="Episodeslabel" destination="JcX-X0-CLv" id="nXR-8q-7wy"/>
                         <outlet property="activityView" destination="nD5-Kh-DAI" id="arK-oT-0AZ"/>
                         <outlet property="bgImageView" destination="gA6-ow-OSD" id="J97-Wh-HTG"/>
+                        <outlet property="episodesLabel" destination="JcX-X0-CLv" id="nXR-8q-7wy"/>
                         <outlet property="favButton" destination="eDG-0p-FwI" id="4rX-LV-izN"/>
                         <outlet property="genreLabel" destination="jcx-Lu-QPW" id="VlR-gT-fwz"/>
                         <outlet property="moreInfo" destination="dGk-60-bA6" id="bCr-oe-EPB"/>
@@ -541,8 +540,9 @@
                                 <rect key="frame" x="309.5" y="0.0" width="84.5" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Favorite" image="heart" catalog="system">
-                                    <color key="titleColor" name="AccentColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </barButtonItem>
@@ -561,7 +561,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZI6-o3-oP4">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="XkZ-mT-mgd" kind="relationship" relationship="rootViewController" id="xwX-Tt-wGb"/>
@@ -599,7 +599,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9i-tP-clP">
-                                                    <rect key="frame" x="346.5" y="43" width="47.5" height="18"/>
+                                                    <rect key="frame" x="316.5" y="43" width="47.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -619,7 +619,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="cxx-Kv-Hla" secondAttribute="trailing" constant="120" id="fhk-uw-LD3"/>
                                                 <constraint firstItem="cxx-Kv-Hla" firstAttribute="top" secondItem="2aJ-zH-Bny" secondAttribute="topMargin" constant="20" id="vFJ-ka-et2"/>
                                                 <constraint firstItem="B8v-Mm-0O0" firstAttribute="leading" secondItem="2aJ-zH-Bny" secondAttribute="leadingMargin" constant="-9" id="vnW-r6-LfN"/>
-                                                <constraint firstItem="a9i-tP-clP" firstAttribute="trailing" secondItem="2aJ-zH-Bny" secondAttribute="trailingMargin" id="zVg-QB-QSN"/>
+                                                <constraint firstItem="a9i-tP-clP" firstAttribute="trailing" secondItem="2aJ-zH-Bny" secondAttribute="trailingMargin" constant="-30" id="zVg-QB-QSN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -733,7 +733,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cZ2-nD-9MX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="kWg-U7-pno" kind="relationship" relationship="rootViewController" id="zwK-tH-ugz"/>
@@ -751,6 +751,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="opaqueSeparatorColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="6hu-du-tie" kind="relationship" relationship="viewControllers" id="9W1-N3-QN1"/>
@@ -773,17 +774,20 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="suit.heart" catalog="system" width="128" height="109"/>
         <image name="tray.full" catalog="system" width="128" height="88"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

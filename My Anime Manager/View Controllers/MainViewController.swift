@@ -88,8 +88,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: view.frame.width/4, height: view.frame.height/6)
         }
         else {
-            return CGSize(width: view.frame.width/4, height: view.frame.height/6)        }
-        
+            return CGSize(width: view.frame.width/4, height: view.frame.height/6)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == topAnimeCollection{

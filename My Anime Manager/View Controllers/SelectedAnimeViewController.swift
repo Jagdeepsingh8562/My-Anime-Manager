@@ -12,7 +12,7 @@ class SelectedAnimeViewController: UIViewController {
     
    
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var Episodeslabel: UILabel!
+    @IBOutlet weak var episodesLabel: UILabel!
     @IBOutlet weak var ratinglabel: UILabel!
     @IBOutlet weak var moreInfo: UIButton!
     @IBOutlet weak var bgImageView: UIImageView!
@@ -36,8 +36,10 @@ class SelectedAnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .black
         bgImageView.alpha = 0.7
+        moreInfo.layer.cornerRadius = 14
+        
         dataController = appDelegate.dataController
        
     }
@@ -62,14 +64,16 @@ class SelectedAnimeViewController: UIViewController {
                 }
                 self.setupView()
                 self.setupFetchedRequest()
-                self.setupFavoriteImage()
+                self.setupFavoriteIcon()
             }
             else {
                 print(error!)
                 }
             }
         }
-    private func setupFavoriteImage(){
+   
+    
+    private func setupFavoriteIcon(){
         if fav {
             favButton.setImage(heartFill, for: .normal)
         }
@@ -102,7 +106,7 @@ class SelectedAnimeViewController: UIViewController {
     func setupView() {
         titleLabel.text = selectedAnime.title
         genreLabel.text = "\(genres.joined(separator: ","))"
-        Episodeslabel.text = "Episodes:\(selectedAnime.episodes ?? 0)"
+        episodesLabel.text = "Episodes:\(selectedAnime.episodes ?? 0) Type: \(selectedAnime.type)"
         ratinglabel.text = "\(selectedAnime.score ?? 0.0)"
         bgImageView.image = UIImage(named: "imagePlaceholder")
         JikanClient.getAnimeImage(urlString: selectedAnime.imageURL) { (image) in
@@ -112,7 +116,6 @@ class SelectedAnimeViewController: UIViewController {
             self.bgImageView.image = image
             
         }
-        
         setupProgressBar()
     }
     

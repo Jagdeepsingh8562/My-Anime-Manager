@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 class SelectedAnimeViewController: UIViewController {
     
-   
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var episodesLabel: UILabel!
     @IBOutlet weak var ratinglabel: UILabel!
@@ -26,6 +26,7 @@ class SelectedAnimeViewController: UIViewController {
     var score:Double = 0
     var genres: [String] = []
     var animeImage: UIImage!
+    var result = [FavoritesEntity]()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataController:DataController!
@@ -41,7 +42,6 @@ class SelectedAnimeViewController: UIViewController {
         moreInfo.layer.cornerRadius = 14
         isLoading(true)
         dataController = appDelegate.dataController
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,15 +64,15 @@ class SelectedAnimeViewController: UIViewController {
                     self.genres.append(genre.name)
                 }
                 self.setupView()
-                self.setupFetchedRequest()
-                self.setupFavoriteIcon()
                 
             }
             else {
                 print(error!)
-                }
             }
         }
+        setupFetchedRequest()
+        setupFavoriteIcon()
+    }
     func isLoading(_ loading: Bool) {
         if loading {
             activityView.startAnimating()
@@ -93,21 +93,23 @@ class SelectedAnimeViewController: UIViewController {
         else {
             favButton.setImage(heart, for: .normal)
         }
-            
+        
     }
     fileprivate func setupFetchedRequest() {
         let fetchRequest:NSFetchRequest<FavoritesEntity> = FavoritesEntity.fetchRequest()
         fetchRequest.sortDescriptors = []
         if let  result = try? dataController.viewContext.fetch(fetchRequest){
-        
+            
             for favor in result {
                 if favor.animeId == selectedAnime.malID {
                     fav = favor.favorite
                     favoritesToDelete = favor
                 }
             }
-            }
+            self.result = result
         }
+        
+    }
     fileprivate func setupProgressBar() {
         progessview.lineColor = .systemRed
         progessview.lineWidth = 6
@@ -124,7 +126,7 @@ class SelectedAnimeViewController: UIViewController {
                 let random = Int.random(in: 0..<pictures.count)
                 JikanClient.getAnimeImage(urlString: pictures[random].large) { (image) in
                     if let image = image  {
-                    self.bgImageView.image = image
+                        self.bgImageView.image = image
                     }
                 }
                 self.isLoading(false)
@@ -136,7 +138,7 @@ class SelectedAnimeViewController: UIViewController {
         //Image to Store in CoreData
         JikanClient.getAnimeImage(urlString: selectedAnime.imageURL) { (image) in
             if let image = image  {
-            self.animeImage = image
+                self.animeImage = image
             }
             
         }
@@ -153,24 +155,30 @@ class SelectedAnimeViewController: UIViewController {
     }
     
     @IBAction func setFavorite(_ sender: Any) {
-        let favEntity = FavoritesEntity(context: dataController.viewContext)
-        favEntity.image = animeImage.pngData()
-        favEntity.name = selectedAnime.title
-        favEntity.score = selectedAnime.score ?? 0
-        favEntity.animeId = Int32(selectedAnime.malID)
+        
         //fav
         if favButton.image(for: .normal) == heart {
-        favButton.setImage(heartFill, for: .normal)
+            favButton.setImage(heartFill, for: .normal)
+            let favEntity = FavoritesEntity(context: dataController.viewContext)
+            favEntity.image = animeImage.pngData()
+            favEntity.name = selectedAnime.title
+            favEntity.score = selectedAnime.score ?? 0
+            favEntity.animeId = Int32(selectedAnime.malID)
             favEntity.favorite = true
             try? dataController.viewContext.save()
         }
         //not fav
         else {
             favButton.setImage(heart, for: .normal)
-            favEntity.favorite = false
-            favoritesToDelete = favEntity
-            dataController.viewContext.delete(favoritesToDelete)
+            var animeToDelete: FavoritesEntity?
+            for f in result {
+                if (f.animeId == selectedAnime.malID) {
+                    animeToDelete = f
+                }
+            }
+            dataController.viewContext.delete(animeToDelete!)
             try? dataController.viewContext.save()
+            
         }
         
     }
@@ -186,6 +194,7 @@ class SelectedAnimeViewController: UIViewController {
         vc.selectedAnime = selectedAnime
         vc.dataController = dataController
         vc.fav = fav
+        vc.result = result
         navigationController?.pushViewController(vc, animated: true)
     }
     

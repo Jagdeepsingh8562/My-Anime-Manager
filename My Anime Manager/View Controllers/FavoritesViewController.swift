@@ -57,5 +57,14 @@ class FavoritesViewController: UIViewController,UITableViewDelegate,UITableViewD
         vc.animeId = Int(favEntity[indexPath.row].animeId)
         navigationController?.pushViewController(vc, animated: true)
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        switch editingStyle {
+        case .delete: dataController.viewContext.delete(favEntity[indexPath.row])
+        try? dataController.viewContext.save()
+        tableView.reloadData()
+        default: () // Unsupported
+        }
+    }
     
 }

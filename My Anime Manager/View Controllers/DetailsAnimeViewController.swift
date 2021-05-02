@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DetailsAnimeViewController: UIViewController {
     
     var selectedAnime: SelectedAnimeResponse!
     var fav: Bool = false
+    var result = [FavoritesEntity]()
     var dataController:DataController!
     let heartFill = UIImage(systemName: "heart.fill")
     let heart = UIImage(systemName: "heart")
@@ -30,12 +32,29 @@ class DetailsAnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         setupView()
-        setupFavoriteIcon()
         characterCollentionView.delegate = self
         characterCollentionView.dataSource = self
         characterCalls()
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupFetchedRequest()
+        setupFavoriteIcon()
+    }
+    fileprivate func setupFetchedRequest() {
+        let fetchRequest:NSFetchRequest<FavoritesEntity> = FavoritesEntity.fetchRequest()
+        fetchRequest.sortDescriptors = []
+        if let  result = try? dataController.viewContext.fetch(fetchRequest){
+            for favor in result {
+                if favor.animeId == selectedAnime.malID {
+                    fav = favor.favorite
+                }
+            }
+            self.result = result
+        }
+        
+        }
     func characterCalls(){
         JikanClient.getCharacters(animeId: selectedAnime.malID) { (success, error) in
             if success {
@@ -88,25 +107,30 @@ class DetailsAnimeViewController: UIViewController {
     }
         
         @IBAction func setFavoriteAction(_ sender: Any) {
-        let favEntity = FavoritesEntity(context: dataController.viewContext)
-        favEntity.image = imageView.image?.pngData()
-        favEntity.name = selectedAnime.title
-        favEntity.score = selectedAnime.score ?? 0
-        favEntity.animeId = Int32(selectedAnime.malID)
-        //fav
-        if favButton.image(for: .normal) == heart {
-        favButton.setImage(heartFill, for: .normal)
-            favEntity.favorite = true
-            try? dataController.viewContext.save()
-        }
-        //not fav
-        else {
-            favButton.setImage(heart, for: .normal)
-            favEntity.favorite = false
-            //favoritesToDelete = favEntity
-            //dataController.viewContext.delete()
-            try? dataController.viewContext.save()
-        }
+            
+             //fav
+             if favButton.image(for: .normal) == heart {
+                 favButton.setImage(heartFill, for: .normal)
+                 let favEntity = FavoritesEntity(context: dataController.viewContext)
+                favEntity.image = imageView.image!.pngData()
+                 favEntity.name = selectedAnime.title
+                 favEntity.score = selectedAnime.score ?? 0
+                 favEntity.animeId = Int32(selectedAnime.malID)
+                 favEntity.favorite = true
+                 try? dataController.viewContext.save()
+             }
+             //not fav
+             else {
+                 favButton.setImage(heart, for: .normal)
+                 var animeToDelete: FavoritesEntity!
+                 for f in result {
+                     if (f.animeId == selectedAnime.malID) {
+                         animeToDelete = f
+                     }
+                 }
+                 dataController.viewContext.delete(animeToDelete!)
+                 try? dataController.viewContext.save()
+             }
     }
     
 }

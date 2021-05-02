@@ -9,16 +9,10 @@ import Foundation
 
 // MARK: - SelectedAnimeCharactersResponse
 struct SelectedAnimeCharactersResponse: Codable {
-    let requestHash: String
-    let requestCached: Bool
-    let requestCacheExpiry: Int
     let characters: [Character]
     let staff: [Staff]
 
     enum CodingKeys: String, CodingKey {
-        case requestHash = "request_hash"
-        case requestCached = "request_cached"
-        case requestCacheExpiry = "request_cache_expiry"
         case characters, staff
     }
 }
@@ -30,14 +24,14 @@ struct Character: Codable {
     let imageURL: String
     let name: String
     let role: Role
-    let voiceActors: [Staff]
+    //let voiceActors: [Staff]?
 
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"
         case url
         case imageURL = "image_url"
         case name, role
-        case voiceActors = "voice_actors"
+       // case voiceActors = "voice_actors"
     }
 }
 

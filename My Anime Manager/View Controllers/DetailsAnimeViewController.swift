@@ -18,6 +18,8 @@ class DetailsAnimeViewController: UIViewController {
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var otherNamesLabel: UILabel!
     @IBOutlet weak var episodesAndRatedLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -55,6 +57,8 @@ class DetailsAnimeViewController: UIViewController {
         otherNamesLabel.text = selectedAnime.titleEnglish ?? ""
         episodesAndRatedLabel.text = "Ep:\(selectedAnime.episodes ?? 0) Ep/per:\(selectedAnime.duration )"
         synopsisTextView.text = selectedAnime.synopsis
+        typeLabel.text = selectedAnime.type
+        rankLabel.text = "Rank: \(selectedAnime.rank ?? 0)"
         setupFlowLayout() 
         guard let date = selectedAnime.aired?.string else {
             dateLabel.text = ""
@@ -108,7 +112,7 @@ class DetailsAnimeViewController: UIViewController {
 }
 extension DetailsAnimeViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width/4, height: view.frame.height/6)
+        return CGSize(width: view.frame.width/3.8, height: view.frame.height/5.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return animeCharacters.count

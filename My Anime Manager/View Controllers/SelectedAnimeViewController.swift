@@ -25,7 +25,7 @@ class SelectedAnimeViewController: UIViewController {
     var animeId: Int = 20
     var score:Double = 0
     var genres: [String] = []
-
+    var animeImage: UIImage!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataController:DataController!
@@ -58,7 +58,7 @@ class SelectedAnimeViewController: UIViewController {
                 if let score = self.selectedAnime.score {
                     self.score = score/10
                 }
-                
+                self.genres.removeAll() 
                 //genre
                 for genre in self.selectedAnime.genres {
                     self.genres.append(genre.name)
@@ -66,7 +66,7 @@ class SelectedAnimeViewController: UIViewController {
                 self.setupView()
                 self.setupFetchedRequest()
                 self.setupFavoriteIcon()
-                self.isLoading(false)
+                
             }
             else {
                 print(error!)
@@ -126,12 +126,19 @@ class SelectedAnimeViewController: UIViewController {
                     if let image = image  {
                     self.bgImageView.image = image
                     }
-                    
                 }
+                self.isLoading(false)
             }
             else{
-                print(error)
+                print(error!)
             }
+        }
+        //Image to Store in CoreData
+        JikanClient.getAnimeImage(urlString: selectedAnime.imageURL) { (image) in
+            if let image = image  {
+            self.animeImage = image
+            }
+            
         }
         
     }
@@ -140,14 +147,14 @@ class SelectedAnimeViewController: UIViewController {
         titleLabel.text = selectedAnime.title
         genreLabel.text = "\(genres.joined(separator: ","))"
         episodesLabel.text = "Episodes:\(selectedAnime.episodes ?? 0) Type: \(selectedAnime.type)"
-        ratinglabel.text = "\(selectedAnime.score ?? 0.0)"
+        ratinglabel.text = "⭐️\(selectedAnime.score ?? 0.0)"
         setupImage()
-        setupProgressBar()
+        //setupProgressBar()
     }
     
     @IBAction func setFavorite(_ sender: Any) {
         let favEntity = FavoritesEntity(context: dataController.viewContext)
-        favEntity.image = bgImageView.image?.pngData()
+        favEntity.image = animeImage.pngData()
         favEntity.name = selectedAnime.title
         favEntity.score = selectedAnime.score ?? 0
         favEntity.animeId = Int32(selectedAnime.malID)

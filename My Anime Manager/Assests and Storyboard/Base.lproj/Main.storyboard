@@ -81,12 +81,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uvr-gG-2Tz">
+                                                    <rect key="frame" x="45" y="60" width="20" height="20"/>
+                                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="p6D-g0-AK4" firstAttribute="leading" secondItem="B0p-ql-9No" secondAttribute="leading" id="0jL-Ev-n1x"/>
                                                 <constraint firstAttribute="bottom" secondItem="p6D-g0-AK4" secondAttribute="bottom" id="8EA-fC-IKf"/>
                                                 <constraint firstAttribute="trailing" secondItem="p6D-g0-AK4" secondAttribute="trailing" id="OQY-Er-7zq"/>
+                                                <constraint firstItem="Uvr-gG-2Tz" firstAttribute="centerY" secondItem="B0p-ql-9No" secondAttribute="centerY" id="YwU-DQ-seP"/>
                                                 <constraint firstItem="lAd-wd-Dao" firstAttribute="top" secondItem="B0p-ql-9No" secondAttribute="top" id="epV-Ox-3Z8"/>
+                                                <constraint firstItem="Uvr-gG-2Tz" firstAttribute="centerX" secondItem="B0p-ql-9No" secondAttribute="centerX" id="kLu-1k-abK"/>
                                                 <constraint firstItem="p6D-g0-AK4" firstAttribute="top" secondItem="lAd-wd-Dao" secondAttribute="bottom" id="o8h-X4-h7o"/>
                                                 <constraint firstAttribute="trailing" secondItem="lAd-wd-Dao" secondAttribute="trailing" id="qDu-Cl-zaJ"/>
                                                 <constraint firstItem="lAd-wd-Dao" firstAttribute="leading" secondItem="B0p-ql-9No" secondAttribute="leading" id="wW1-sL-0Do"/>
@@ -94,6 +100,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="140"/>
                                         <connections>
+                                            <outlet property="activityView" destination="Uvr-gG-2Tz" id="mTg-ij-sd6"/>
                                             <outlet property="imageView" destination="lAd-wd-Dao" id="udY-5j-oVH"/>
                                             <outlet property="label" destination="p6D-g0-AK4" id="aiA-qw-cSj"/>
                                         </connections>
@@ -146,11 +153,17 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="116"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-AR-3Gf">
+                                                    <rect key="frame" x="45" y="60" width="20" height="20"/>
+                                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="QlK-Op-esE" secondAttribute="trailing" id="5CC-GF-EOT"/>
                                                 <constraint firstAttribute="trailing" secondItem="HaI-5t-QcF" secondAttribute="trailing" id="AJg-KD-4vx"/>
                                                 <constraint firstItem="HaI-5t-QcF" firstAttribute="top" secondItem="yGZ-Vk-oae" secondAttribute="top" id="N19-8z-Qzl"/>
+                                                <constraint firstItem="5Ia-AR-3Gf" firstAttribute="centerY" secondItem="yGZ-Vk-oae" secondAttribute="centerY" id="RDz-Tl-gQq"/>
+                                                <constraint firstItem="5Ia-AR-3Gf" firstAttribute="centerX" secondItem="yGZ-Vk-oae" secondAttribute="centerX" id="SY4-GT-u7B"/>
                                                 <constraint firstItem="HaI-5t-QcF" firstAttribute="leading" secondItem="yGZ-Vk-oae" secondAttribute="leading" id="YRO-WK-nzd"/>
                                                 <constraint firstItem="QlK-Op-esE" firstAttribute="leading" secondItem="yGZ-Vk-oae" secondAttribute="leading" id="bA4-B8-i9a"/>
                                                 <constraint firstAttribute="bottom" secondItem="QlK-Op-esE" secondAttribute="bottom" id="gzL-Pm-cok"/>
@@ -159,6 +172,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="140"/>
                                         <connections>
+                                            <outlet property="activityView" destination="5Ia-AR-3Gf" id="Hks-2I-vwb"/>
                                             <outlet property="imageView" destination="HaI-5t-QcF" id="RIo-N6-8Yt"/>
                                             <outlet property="label" destination="QlK-Op-esE" id="ig1-TJ-4wu"/>
                                         </connections>
@@ -199,9 +213,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="H0o-7H-5Uh">
+                                                    <rect key="frame" x="44.5" y="60" width="20" height="20"/>
+                                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="LC4-IT-IZ7" firstAttribute="top" secondItem="jOX-CL-1fl" secondAttribute="bottom" constant="2" id="571-3m-lmA"/>
+                                                <constraint firstItem="H0o-7H-5Uh" firstAttribute="centerY" secondItem="YDc-FH-qzX" secondAttribute="centerY" id="Qgw-Iy-zwK"/>
+                                                <constraint firstItem="H0o-7H-5Uh" firstAttribute="centerX" secondItem="YDc-FH-qzX" secondAttribute="centerX" id="SLH-Za-uXb"/>
                                                 <constraint firstAttribute="bottom" secondItem="LC4-IT-IZ7" secondAttribute="bottom" constant="1" id="YD4-VR-6MZ"/>
                                                 <constraint firstItem="LC4-IT-IZ7" firstAttribute="trailing" secondItem="jOX-CL-1fl" secondAttribute="trailing" id="lPc-4g-ByY"/>
                                                 <constraint firstItem="LC4-IT-IZ7" firstAttribute="leading" secondItem="jOX-CL-1fl" secondAttribute="leading" id="s0c-KU-h9v"/>
@@ -210,6 +230,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="109" height="140"/>
                                         <connections>
+                                            <outlet property="activityView" destination="H0o-7H-5Uh" id="iju-pZ-edx"/>
                                             <outlet property="imageView" destination="jOX-CL-1fl" id="9uT-C9-cb3"/>
                                             <outlet property="label" destination="LC4-IT-IZ7" id="HLw-d1-Hpx"/>
                                         </connections>
@@ -496,10 +517,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Uyt-fX-MBE">
+                                                    <rect key="frame" x="40" y="54" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Uyt-fX-MBE" firstAttribute="centerY" secondItem="tGK-zk-OEz" secondAttribute="centerY" id="6gL-s8-AiT"/>
+                                                <constraint firstItem="Uyt-fX-MBE" firstAttribute="centerX" secondItem="tGK-zk-OEz" secondAttribute="centerX" id="eMP-t8-yhX"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="100" height="128"/>
                                         <connections>
+                                            <outlet property="activityView" destination="Uyt-fX-MBE" id="Q5x-Zn-kgv"/>
                                             <outlet property="imageView" destination="bJb-bh-6uv" id="grZ-3R-eG8"/>
                                             <outlet property="label" destination="IQf-JW-jX1" id="3yV-iG-IgC"/>
                                         </connections>
@@ -833,7 +862,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wUd-D1-d1G"/>
+        <segue reference="Oac-vK-3gj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>

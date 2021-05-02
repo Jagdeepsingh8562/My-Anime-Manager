@@ -16,7 +16,6 @@ class SelectedAnimeViewController: UIViewController {
     @IBOutlet weak var ratinglabel: UILabel!
     @IBOutlet weak var moreInfo: UIButton!
     @IBOutlet weak var bgImageView: UIImageView!
-    @IBOutlet weak var progessview: CircularProgressBar!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var favButton: UIButton!
@@ -110,13 +109,7 @@ class SelectedAnimeViewController: UIViewController {
         }
         
     }
-    fileprivate func setupProgressBar() {
-        progessview.lineColor = .systemRed
-        progessview.lineWidth = 6
-        progessview.labelSize = 0
-        progessview.safePercent = 100
-        progessview.setProgress(to:  score, withAnimation: true)
-    }
+    
     
     fileprivate func setupImage() {
         
@@ -195,7 +188,14 @@ class SelectedAnimeViewController: UIViewController {
         vc.dataController = dataController
         vc.fav = fav
         vc.result = result
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+extension SelectedAnimeViewController: DetailsAnimeViewDelegate {
+    func sendFavStatus(favStatus: Bool) {
+        fav = favStatus
+    }
 }

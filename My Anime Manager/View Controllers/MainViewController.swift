@@ -82,13 +82,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == topAnimeCollection {
-            return CGSize(width: view.frame.width/4, height: view.frame.height/6)
+            return CGSize(width: view.frame.width/4, height: view.frame.height/5)
         }
         else if collectionView == currentSeasonAnimeCollection{
-            return CGSize(width: view.frame.width/4, height: view.frame.height/6)
+            return CGSize(width: view.frame.width/4, height: view.frame.height/5)
         }
         else {
-            return CGSize(width: view.frame.width/4, height: view.frame.height/6)
+            return CGSize(width: view.frame.width/4, height: view.frame.height/5)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,10 +105,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func customCollectionViewCell(_ collectionView: UICollectionView,indexPath: IndexPath,reuseIdentifier: String,animeArray: [SeasonAnime]) -> UICollectionViewCell{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCell
+            cell.activityView.startAnimating()
             cell.label.text = animeArray[indexPath.row].title
             cell.imageView.image = UIImage(named: "imagePlaceholder")
             JikanClient.getAnimeImage(urlString: animeArray[indexPath.item].imageURL) { (image) in
             cell.imageView.image = image
+            cell.activityView.stopAnimating()
         }
             return cell
     }

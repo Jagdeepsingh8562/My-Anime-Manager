@@ -11,6 +11,7 @@ class CustomCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func awakeFromNib() {
        super.awakeFromNib()

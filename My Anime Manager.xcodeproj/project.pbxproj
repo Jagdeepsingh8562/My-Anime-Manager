@@ -27,7 +27,6 @@
 		B9C11C17262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */; };
 		B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */; };
 		B9C3F4082639B4960052B6C6 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C3F4072639B4960052B6C6 /* DataController.swift */; };
-		B9D8CF0B26353DBE0025DC7B /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */; };
 		B9ECA4E226304CEE007D775C /* CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E126304CEE007D775C /* CollectionViews.swift */; };
 		B9ECA4E626305C32007D775C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ECA4E526305C32007D775C /* CustomCell.swift */; };
 		B9F6C3B6263D854000F20905 /* DetailsAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6C3B5263D854000F20905 /* DetailsAnimeViewController.swift */; };
@@ -57,7 +56,6 @@
 		B9C11C16262EF9CA00DB7EFB /* SeasonalAnimeReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalAnimeReponse.swift; sourceTree = "<group>"; };
 		B9C11C19262F044A00DB7EFB /* SeasonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHelper.swift; sourceTree = "<group>"; };
 		B9C3F4072639B4960052B6C6 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		B9ECA4E126304CEE007D775C /* CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViews.swift; sourceTree = "<group>"; };
 		B9ECA4E526305C32007D775C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		B9F6C3B5263D854000F20905 /* DetailsAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAnimeViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			children = (
 				B9ECA4E126304CEE007D775C /* CollectionViews.swift */,
 				B9ECA4E526305C32007D775C /* CustomCell.swift */,
-				B9D8CF0A26353DBE0025DC7B /* CircularProgressBar.swift */,
 				B9A1C2762639AFA200823459 /* FavoritesCustomCell.swift */,
 			);
 			path = "Custom Views";
@@ -263,7 +260,6 @@
 				B90E9342262ADA94000F6065 /* AppDelegate.swift in Sources */,
 				B90E934C262ADA94000F6065 /* My_Anime_Manager.xcdatamodeld in Sources */,
 				B9FCE7A0263460D40075999C /* SearchViewController.swift in Sources */,
-				B9D8CF0B26353DBE0025DC7B /* CircularProgressBar.swift in Sources */,
 				B9F6C3B6263D854000F20905 /* DetailsAnimeViewController.swift in Sources */,
 				B90E9344262ADA94000F6065 /* SceneDelegate.swift in Sources */,
 				B9C11C1A262F044A00DB7EFB /* SeasonHelper.swift in Sources */,

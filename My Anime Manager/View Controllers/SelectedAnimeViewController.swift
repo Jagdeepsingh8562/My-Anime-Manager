@@ -64,14 +64,14 @@ class SelectedAnimeViewController: UIViewController {
                     self.genres.append(genre.name)
                 }
                 self.setupView()
-                
+                self.setupFetchedRequest()
+                self.setupFavoriteIcon()
             }
             else {
                 print(error!)
             }
         }
-        setupFetchedRequest()
-        setupFavoriteIcon()
+        
     }
     func isLoading(_ loading: Bool) {
         if loading {

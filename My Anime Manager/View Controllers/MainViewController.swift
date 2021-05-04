@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currentSeasonAnimeCollection: CurrentAnimeCollectionView!
     @IBOutlet weak var upcommingAnimeCollection: UpcommingAnimeCollectionView!
     @IBOutlet weak var seasonLabel: UILabel!
-    //weak var delegate: SelectedAnimeViewController!
     
     var topAnimes: [SeasonAnime] = []
     var upcommingAnimes: [SeasonAnime] = []
@@ -38,15 +37,6 @@ class MainViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    
-    func setupFlowLayout(flowLayout: UICollectionViewFlowLayout) {
-            let space:CGFloat = 6.0
-            let dimension = (view.frame.size.width - (2 * space)) / 3.0
-            flowLayout.minimumInteritemSpacing = space
-            flowLayout.minimumLineSpacing = space
-            flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-            flowLayout.scrollDirection = .horizontal
-        }
     func apicalls() {
         JikanClient.getCurrentSeasonAnime { (success, error) in
             if success {
@@ -54,8 +44,7 @@ class MainViewController: UIViewController {
                 self.currentSeasonAnimeCollection.reloadData()
                             }
             else {
-                print(error!)
-                
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
             }
             
         }
@@ -63,13 +52,15 @@ class MainViewController: UIViewController {
             if   success {  self.topAnimes = Array(JikanClient.Const.topAnime.prefix(50))
                 self.topAnimeCollection.reloadData()
 
-            } else { print(error!) }
+            } else { self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong") }
         }
         JikanClient.getUpcommingSeasonAnime { (success, error) in
             if success  {self.upcommingAnimes = Array(JikanClient.Const.upcommingSeasonAnime.prefix(50))
                 self.upcommingAnimeCollection.reloadData()
             }
-            else{print(error!)}
+            else{
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
+            }
         }
         
     }

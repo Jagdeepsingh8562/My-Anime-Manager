@@ -67,7 +67,7 @@ class SelectedAnimeViewController: UIViewController {
                 self.setupFavoriteIcon()
             }
             else {
-                print(error!)
+                self.showAlert(message: "\(error!)", title: "Something is Wrong")
             }
         }
         
@@ -125,7 +125,7 @@ class SelectedAnimeViewController: UIViewController {
                 self.isLoading(false)
             }
             else{
-                print(error!)
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
             }
         }
         //Image to Store in CoreData

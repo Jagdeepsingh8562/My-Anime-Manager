@@ -76,7 +76,7 @@ class DetailsAnimeViewController: UIViewController {
                 self.recommendationCollentionView.reloadData()
             }
             else {
-                print(error!, "error")
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
             }
         }
     }
@@ -87,7 +87,7 @@ class DetailsAnimeViewController: UIViewController {
                 self.characterCollentionView.reloadData()
             }
             else {
-                print(error!)
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
             }
         }
     }
@@ -98,11 +98,18 @@ class DetailsAnimeViewController: UIViewController {
                 self.imageView.image = image }
         })
         nameLabel.text = selectedAnime.title
-        otherNamesLabel.text = selectedAnime.titleEnglish ?? ""
+        otherNamesLabel.text = ""
+        if let english = selectedAnime.titleEnglish {
+            otherNamesLabel.text = "English:\(english)"
+        }
+        
+        if selectedAnime.title == selectedAnime.titleEnglish {
+            otherNamesLabel.text = ""
+        }
         episodesAndRatedLabel.text = "Ep:\(selectedAnime.episodes ?? 0)(\(selectedAnime.duration))"
         synopsisTextView.text = selectedAnime.synopsis
         typeLabel.text = selectedAnime.type
-        rankLabel.text = "Rank: \(selectedAnime.rank ?? 0)"
+        rankLabel.text = "Rank:#\(selectedAnime.rank ?? 0)"
         setupFlowLayout(flowLayout: flowLayout)
         setupFlowLayout(flowLayout: recommedFlowLayout)
         guard let date = selectedAnime.aired?.string else {
@@ -111,14 +118,6 @@ class DetailsAnimeViewController: UIViewController {
         }
         dateLabel.text = "Date:"+date
         
-    }
-    func setupFlowLayout(flowLayout: UICollectionViewFlowLayout) {
-        let space:CGFloat = 2.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        flowLayout.scrollDirection = .horizontal
     }
     private func setupFavoriteIcon(){
         if fav {
@@ -161,7 +160,9 @@ class DetailsAnimeViewController: UIViewController {
             delegate.sendFavStatus(favStatus: false)
         }
     }
-    
+    @IBAction func openSelectedAnimeUrl(_ sender: Any) {
+        openLink(selectedAnime.url)
+    }
 }
 extension DetailsAnimeViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

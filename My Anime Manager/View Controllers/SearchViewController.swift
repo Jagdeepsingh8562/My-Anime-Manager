@@ -35,7 +35,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                     self.searchedAnime = JikanClient.Const.searchedAnime
                     self.tableView.reloadData()
                 } else {
-                    print(error!)
+                    print(error!.localizedDescription)
                 }
                 
             }

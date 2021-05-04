@@ -184,16 +184,16 @@ class JikanClient {
                     completion(responseObject, nil)
                 }
             } catch {
-//                do {
-//                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
-//                    DispatchQueue.main.async {
-//                        completion(nil, errorResponse)
-//                    }
-//                } catch {
-//                    DispatchQueue.main.async {
-//                        completion(nil, error)
-//                    }
-//                }
+                do {
+                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
                 completion(nil,error)
             }
         }

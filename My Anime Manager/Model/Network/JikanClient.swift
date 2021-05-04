@@ -66,7 +66,7 @@ class JikanClient {
     }
     
     class func getSelectedAnime(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.selectedAnime(animeId).url, responseType: SelectedAnimeResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.selectedAnime(animeId).url, responseType: SelectedAnimeResponse.self) { (response, error) in
             if let response = response {
                 Const.selectedAnime = response
                 completion(true, nil)
@@ -77,7 +77,7 @@ class JikanClient {
         }
     }
     class func getRecommendAnime(animeId : Int,completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.recommendAnime(animeId).url, responseType: RecommendationsAnimeResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.recommendAnime(animeId).url, responseType: RecommendationsAnimeResponse.self) { (response, error) in
             if let response = response {
                 Const.recommendationsAnime = response.recommendations
                 completion(true, nil)
@@ -88,7 +88,7 @@ class JikanClient {
         }
     }
     class func getCharacters(animeId : Int,completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.characters(animeId).url, responseType: SelectedAnimeCharactersResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.characters(animeId).url, responseType: SelectedAnimeCharactersResponse.self) { (response, error) in
             if let response = response {
                 Const.selectedAnimeCharacters = response.characters
                 completion(true,nil)
@@ -98,7 +98,7 @@ class JikanClient {
         }
     }
     class func getCurrentSeasonAnime(completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.currentSeason.url, responseType: SeasonResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.currentSeason.url, responseType: SeasonResponse.self) { (response, error) in
             if let response = response {
                 Const.currentSeasonAnime = response.anime
                 completion(true,nil)
@@ -109,7 +109,7 @@ class JikanClient {
         }
     }
     class func getUpcommingSeasonAnime(completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.upcommingSeason.url, responseType: SeasonResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.upcommingSeason.url, responseType: SeasonResponse.self) { (response, error) in
             if let response = response {
                 Const.upcommingSeasonAnime = response.anime
                 
@@ -121,7 +121,7 @@ class JikanClient {
         }
     }
     class func getTopAnime(completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.topAnime.url, responseType: TopAnimeResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.topAnime.url, responseType: TopAnimeResponse.self) { (response, error) in
             if let response = response {
                 Const.topAnime = response.top
                 completion(true, nil)
@@ -132,7 +132,7 @@ class JikanClient {
         }
     }
     class func getPictures(animeId: Int,completion: @escaping (Bool, Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.pictures(animeId).url, responseType: ImageResponse.self) { (response, error) in
+        let _ = taskForGETRequest(url: Endpoints.pictures(animeId).url, responseType: ImageResponse.self) { (response, error) in
             if let response = response {
                 Const.pictures = response.pictures
                 completion(true, nil)

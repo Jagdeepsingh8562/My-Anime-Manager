@@ -7,10 +7,7 @@
 
 import Foundation
 import UIKit
-
-
-import Foundation
-import UIKit
+import Network
 
 extension UIViewController {
     
@@ -37,6 +34,24 @@ extension UIViewController {
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         flowLayout.scrollDirection = .horizontal
+    }
+
+    func internetChecker()-> Bool{
+        let monitor = NWPathMonitor()
+        let netqueue = DispatchQueue(label: "InternetConnectionMonitor")
+        var net:Bool = false
+        monitor.pathUpdateHandler = { pathUpdateHandler in
+            if pathUpdateHandler.status == .satisfied {
+                print("Internet connection is on.")
+                net = true
+            } else {
+                print("There's no internet connection.")
+                net = false
+            }
+        }
+        
+        monitor.start(queue: netqueue)
+        return net
     }
 
 }

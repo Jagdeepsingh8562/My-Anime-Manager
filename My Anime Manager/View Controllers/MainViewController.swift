@@ -25,7 +25,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         seasonLabel.text = SeasonHelper.currentSeason()
         setupFlowLayout(flowLayout: topFlowLayout)
         setupFlowLayout(flowLayout: currentFlowLayout)

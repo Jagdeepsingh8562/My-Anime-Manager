@@ -40,6 +40,9 @@ class SelectedAnimeViewController: UIViewController {
         bgImageView.alpha = 0.7
         moreInfo.layer.cornerRadius = 14
         isLoading(true)
+        if internetChecker() == false {
+            showAlert(message: "There's no internet connection.", title: "Error")
+        }
         dataController = appDelegate.dataController
     }
     
@@ -67,7 +70,7 @@ class SelectedAnimeViewController: UIViewController {
                 self.setupFavoriteIcon()
             }
             else {
-                self.showAlert(message: "\(error!)", title: "Something is Wrong")
+                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
             }
         }
         

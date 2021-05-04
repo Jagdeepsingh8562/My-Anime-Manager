@@ -87,7 +87,7 @@ class DetailsAnimeViewController: UIViewController {
                 self.characterCollentionView.reloadData()
             }
             else {
-                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
+                print(error!)
             }
         }
     }

@@ -8,11 +8,12 @@
 ## App Features
 
 1. Get Current Top Animes,Current Season Anime(Ongoing Animes) and Upcomming Animes.
-2. Shows the Details of the Anime.
-3. Set Anime you like as Favorites and store in the app as persistent data
-4. Get Recommendations on basis of selected anime
-5. For more Info click globe icon that will take you to Anime's MyAnimeList page 
-6. Adapts to dark or light mode based on the system.
+2. Search any Anime you like.
+3. Shows the Details of the Anime.
+4. Set Anime you like as Favorites and store in the app as persistent data
+5. Get Recommendations on basis of selected anime
+6. For more Info click globe icon that will take you to Anime's MyAnimeList page 
+7. Adapts to dark or light mode based on the system.
 
 ## Requirements
 1. Xcode 12

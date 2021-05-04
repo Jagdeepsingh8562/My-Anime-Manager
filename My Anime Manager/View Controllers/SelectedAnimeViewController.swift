@@ -167,6 +167,7 @@ class SelectedAnimeViewController: UIViewController {
         }
         //not fav
         else {
+            setupFetchedRequest()
             favButton.setImage(heart, for: .normal)
             var animeToDelete: FavoritesEntity?
             for f in result {

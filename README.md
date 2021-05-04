@@ -1,10 +1,5 @@
 # My-Anime-Manager
 
-## How to build/compile
-1. Open "project.xcworkspace" file.
-2. Select appropriate simulator.
-3. Click the run button or command + R to run the project.
-
 ## App Features
 
 1. Get Current Top Animes,Current Season Anime(Ongoing Animes) and Upcomming Animes.
@@ -14,6 +9,13 @@
 5. Get Recommendations on basis of selected anime
 6. For more Info click globe icon that will take you to Anime's MyAnimeList page 
 7. Adapts to dark or light mode based on the system.
+
+## Screenshots
+<img src = "Screenshots/screenshot_home.png" width = "180">  &nbsp; &nbsp; <img src = "Screenshots/screenshot_s.png" width = "180"> &nbsp; &nbsp; <img src = "Screenshots/screenshot_fav.png" width = "180"> &nbsp; &nbsp; <img src = "Screenshots/screenshot_sa.png" width = "180"> &nbsp; &nbsp; <img src = "Screenshots/screenshot_info.png" width = "180"> 
+## How to build/compile
+1. Open "project.xcworkspace" file.
+2. Select appropriate simulator.
+3. Click the run button or command + R to run the project.
 
 ## Requirements
 1. Xcode 12

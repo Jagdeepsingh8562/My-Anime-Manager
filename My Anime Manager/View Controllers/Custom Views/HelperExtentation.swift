@@ -36,22 +36,25 @@ extension UIViewController {
         flowLayout.scrollDirection = .horizontal
     }
 
-    func internetChecker()-> Bool{
+    func internetChecker(completion: @escaping (Bool) -> Void){
         let monitor = NWPathMonitor()
         let netqueue = DispatchQueue(label: "InternetConnectionMonitor")
-        var net:Bool = false
         monitor.pathUpdateHandler = { pathUpdateHandler in
             if pathUpdateHandler.status == .satisfied {
                 print("Internet connection is on.")
-                net = true
+                DispatchQueue.main.async {
+                    completion(true)
+                }
             } else {
                 print("There's no internet connection.")
-                net = false
+                DispatchQueue.main.async {
+                    completion(false)
+                }
             }
         }
         
         monitor.start(queue: netqueue)
-        return net
+    
     }
 
 }

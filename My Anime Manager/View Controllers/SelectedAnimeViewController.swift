@@ -40,8 +40,10 @@ class SelectedAnimeViewController: UIViewController {
         bgImageView.alpha = 0.7
         moreInfo.layer.cornerRadius = 14
         isLoading(true)
-        if internetChecker() == false {
-            showAlert(message: "There's no internet connection.", title: "Error")
+        internetChecker { (success) in
+            if success == false {
+                self.showAlert(message: "Internet connection is not avilable", title: "Error")
+            }
         }
         dataController = appDelegate.dataController
     }

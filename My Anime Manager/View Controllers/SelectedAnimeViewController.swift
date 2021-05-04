@@ -30,7 +30,6 @@ class SelectedAnimeViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataController:DataController!
     var fav: Bool = false
-    var favoritesToDelete: FavoritesEntity!
     let heartFill = UIImage(systemName: "heart.fill")
     let heart = UIImage(systemName: "heart")
     
@@ -107,7 +106,6 @@ class SelectedAnimeViewController: UIViewController {
             for favor in result {
                 if favor.animeId == selectedAnime.malID {
                     fav = favor.favorite
-                    favoritesToDelete = favor
                 }
             }
             self.result = result
@@ -149,7 +147,6 @@ class SelectedAnimeViewController: UIViewController {
         episodesLabel.text = "Episodes:\(selectedAnime.episodes ?? 0) Type: \(selectedAnime.type)"
         ratinglabel.text = "⭐️\(selectedAnime.score ?? 0.0)"
         setupImage()
-        //setupProgressBar()
     }
     
     @IBAction func setFavorite(_ sender: Any) {

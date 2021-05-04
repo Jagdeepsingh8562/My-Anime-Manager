@@ -755,9 +755,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-H0-zuh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-H0-zuh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" rowHeight="120" id="bLn-vW-9gN" customClass="FavoritesCustomCell" customModule="My_Anime_Manager" customModuleProvider="target">
@@ -815,6 +814,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qYu-HH-VUW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B7f-H0-zuh" firstAttribute="bottom" secondItem="qYu-HH-VUW" secondAttribute="bottom" id="0jJ-u3-XRS"/>
+                            <constraint firstItem="B7f-H0-zuh" firstAttribute="top" secondItem="qYu-HH-VUW" secondAttribute="top" id="cJ2-Mk-AoK"/>
+                            <constraint firstItem="B7f-H0-zuh" firstAttribute="leading" secondItem="qYu-HH-VUW" secondAttribute="leading" id="kuI-3b-B22"/>
+                            <constraint firstItem="B7f-H0-zuh" firstAttribute="trailing" secondItem="qYu-HH-VUW" secondAttribute="trailing" id="qsY-kS-Ki7"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" selectedImage="suit.heart" catalog="system" systemItem="favorites" id="YUR-Vy-Ohp"/>
                     <navigationItem key="navigationItem" title="Favorites Animes" id="f5Q-Ci-vdJ"/>

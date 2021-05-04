@@ -24,14 +24,12 @@ struct Character: Codable {
     let imageURL: String
     let name: String
     let role: Role
-    //let voiceActors: [Staff]?
 
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"
         case url
         case imageURL = "image_url"
         case name, role
-       // case voiceActors = "voice_actors"
     }
 }
 

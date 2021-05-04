@@ -11,6 +11,7 @@ import CoreData
 
 protocol DetailsAnimeViewDelegate {
     func sendFavStatus(favStatus: Bool)
+    func sendAnimeId(malId: Int)
 }
 
 class DetailsAnimeViewController: UIViewController {
@@ -31,15 +32,23 @@ class DetailsAnimeViewController: UIViewController {
     @IBOutlet weak var episodesAndRatedLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var synopsisTextView: UITextView!
-    @IBOutlet weak var characterCollentionView: UICollectionView!
+    @IBOutlet weak var characterCollentionView: CharectersCollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var recommedFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var recommendationCollentionView: RecommendationsAnimeCollectionView!
     var animeCharacters: [Character] = []
+    var recommendations: [Recommendation] = []
     
     override func viewDidLoad() {
         setupView()
+        characterCalls()
+        getRecommentions()
         characterCollentionView.delegate = self
         characterCollentionView.dataSource = self
-        characterCalls()
+        recommendationCollentionView.delegate = self
+        recommendationCollentionView.dataSource = self
+        
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +68,17 @@ class DetailsAnimeViewController: UIViewController {
             self.result = result
         }
         
+    }
+    func getRecommentions() {
+        JikanClient.getRecommendAnime(animeId: selectedAnime.malID) { (success, error) in
+            if success {
+                self.recommendations = JikanClient.Const.recommendationsAnime
+                self.recommendationCollentionView.reloadData()
+            }
+            else {
+                print(error!, "error")
+            }
+        }
     }
     func characterCalls(){
         JikanClient.getCharacters(animeId: selectedAnime.malID) { (success, error) in
@@ -83,7 +103,8 @@ class DetailsAnimeViewController: UIViewController {
         synopsisTextView.text = selectedAnime.synopsis
         typeLabel.text = selectedAnime.type
         rankLabel.text = "Rank: \(selectedAnime.rank ?? 0)"
-        setupFlowLayout() 
+        setupFlowLayout(flowLayout: flowLayout)
+        setupFlowLayout(flowLayout: recommedFlowLayout)
         guard let date = selectedAnime.aired?.string else {
             dateLabel.text = ""
             return
@@ -91,7 +112,7 @@ class DetailsAnimeViewController: UIViewController {
         dateLabel.text = "Date:"+date
         
     }
-    func setupFlowLayout() {
+    func setupFlowLayout(flowLayout: UICollectionViewFlowLayout) {
         let space:CGFloat = 2.0
         let dimension = (view.frame.size.width - (2 * space)) / 3.0
         flowLayout.minimumInteritemSpacing = space
@@ -144,23 +165,54 @@ class DetailsAnimeViewController: UIViewController {
 }
 extension DetailsAnimeViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width/4, height: view.frame.height/5)
+        if collectionView == characterCollentionView {
+                return CGSize(width: view.frame.width/6, height: view.frame.height/5)
+        }
+        else {
+                return CGSize(width: view.frame.width/6, height: view.frame.height/6)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animeCharacters.count
+        if collectionView == characterCollentionView {
+            return animeCharacters.count }
+        else {
+            return recommendations.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "charecterCell", for: indexPath) as! CustomCell
-        cell.layer.cornerRadius = 10
-        cell.activityView.startAnimating()
-        cell.label.text = animeCharacters[indexPath.row].name
-        cell.imageView.image = UIImage(named: "imagePlaceholder")
-        JikanClient.getAnimeImage(urlString: animeCharacters[indexPath.item].imageURL) { (image) in
-            cell.imageView.image = image
-            cell.activityView.stopAnimating()
+        if collectionView == characterCollentionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "charecterCell", for: indexPath) as! CustomCell
+            cell.activityView.startAnimating()
+            cell.label.text = animeCharacters[indexPath.row].name
+            cell.imageView.image = UIImage(named: "imagePlaceholder")
+            JikanClient.getAnimeImage(urlString: animeCharacters[indexPath.item].imageURL) { (image) in
+                cell.imageView.image = image
+                cell.activityView.stopAnimating()
+            }
+            return cell
         }
-        return cell
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! CustomCell
+            cell.activityView.startAnimating()
+            cell.label.text = recommendations[indexPath.row].title
+            cell.imageView.image = UIImage(named: "imagePlaceholder")
+            JikanClient.getAnimeImage(urlString: recommendations[indexPath.item].imageURL) { (image) in
+                cell.imageView.image = image
+                cell.activityView.stopAnimating()
+            }
+        
+            return cell
+        }
+        
+        }
+    //recommendations
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == recommendationCollentionView {
+            delegate.sendAnimeId(malId: recommendations[indexPath.row].malID)
+            delegate.sendFavStatus(favStatus: false)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     

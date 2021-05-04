@@ -195,6 +195,10 @@ class SelectedAnimeViewController: UIViewController {
 }
 
 extension SelectedAnimeViewController: DetailsAnimeViewDelegate {
+    func sendAnimeId(malId: Int) {
+        animeId = malId
+    }
+    
     func sendFavStatus(favStatus: Bool) {
         fav = favStatus
     }

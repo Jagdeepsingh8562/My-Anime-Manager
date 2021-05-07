@@ -76,7 +76,7 @@ class DetailsAnimeViewController: UIViewController {
                 self.recommendationCollentionView.reloadData()
             }
             else {
-                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
+                print(error!)
             }
         }
     }

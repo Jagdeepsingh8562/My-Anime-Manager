@@ -128,7 +128,7 @@ class SelectedAnimeViewController: UIViewController {
                 self.isLoading(false)
             }
             else{
-                self.showAlert(message: "\(error!.localizedDescription)", title: "Something is Wrong")
+               print(error!)
             }
         }
         //Image to Store in CoreData

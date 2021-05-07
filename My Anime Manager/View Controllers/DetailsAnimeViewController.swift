@@ -48,8 +48,6 @@ class DetailsAnimeViewController: UIViewController {
         recommendationCollentionView.delegate = self
         recommendationCollentionView.dataSource = self
         
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -67,7 +65,6 @@ class DetailsAnimeViewController: UIViewController {
             }
             self.result = result
         }
-        
     }
     func getRecommentions() {
         JikanClient.getRecommendAnime(animeId: selectedAnime.malID) { (success, error) in
